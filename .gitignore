@@ -12,6 +12,7 @@
 
 node_modules
 coverage
+client/build
 
 ###############################################################################
 # Accept this files
@@ -23,4 +24,3 @@ coverage
 !.jshintrc
 !.nvmrc
 !.gitattributes
-!.foreverignore
