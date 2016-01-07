@@ -18,6 +18,11 @@ module.exports = function (grunt) {
                     cwd: './client',
                     src: 'index.html',
                     dest: './client/build/'
+                }, {
+                    expand: true,
+                    cwd: './client',
+                    src: ['app/**/*', 'bower_components/**/*'],
+                    dest: './client/build/'
                 }]
             }
         }
