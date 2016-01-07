@@ -1,0 +1,27 @@
+{
+  "name": "abelhas-operarias",
+  "description": "Sistema de Controle para a Instituição Abelhas Operárias",
+  "main": "client/app.js",
+  "authors": [
+    "Vinicius Teixeira"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mean",
+    "express",
+    "node",
+    "mongodb",
+    "sistema",
+    "abelhasoperarias"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/vinicius0026/abelhas-operarias#readme",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
