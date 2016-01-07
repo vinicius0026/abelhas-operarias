@@ -13,6 +13,7 @@
 node_modules
 coverage
 client/build
+client/bower_components
 
 ###############################################################################
 # Accept this files
