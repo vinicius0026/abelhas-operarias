@@ -4,7 +4,7 @@
     var dashboard = function ($stateProvider) {
         $stateProvider
             .state('app.dashboard', {
-                url: '/dashboard',
+                url: '/inicio',
                 templateUrl: 'app/dashboard/dashboardTpl.html',
                 controller: 'DashboardCtrl as vm'
             });

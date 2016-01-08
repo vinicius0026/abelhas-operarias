@@ -2,7 +2,7 @@
     'use strict';
 
     var defaultRoute = function ($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/app/dashboard');
+        $urlRouterProvider.otherwise('/app/inicio');
     };
 
     defaultRoute.$injector = ['$urlRouterProvider'];
