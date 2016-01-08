@@ -5,7 +5,7 @@
         $stateProvider
             .state('app.pregnants', {
                 url: '/gestantes',
-                templateUrl: 'app/pregnants/pregnantsTpl.html',
+                templateUrl: 'app/pregnant/pregnantTpl.html',
                 controller: 'PregnantsCtrl as vm'
             });
     };
