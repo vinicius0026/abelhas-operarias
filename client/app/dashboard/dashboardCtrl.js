@@ -4,7 +4,7 @@
     var DashboardCtrl = function () {
         var vm = this;
 
-        vm.test = 'Dashboard na área';
+        vm.test = 'Tela Inicial';
     };
 
     DashboardCtrl.$inject = [];
