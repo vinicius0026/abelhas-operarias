@@ -7,11 +7,12 @@
     </head>
     <body>
 
-        <div class="container" ng-controller="IndexController as vm">
-            {{ vm.test }}
-        </div>
+        <div ui-view></div>
 
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="app/app.js"></script>
+        <script src="app/home/homeIndex.js"></script>
+        <script src="app/home/homeCtrl.js"></script>
     </body>
 </html>

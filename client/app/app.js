@@ -1,13 +1,12 @@
 (function () {
     'use strict';
 
-    var IndexController = function () {
-        var vm = this;
-
-        vm.test = 'Está funcionando';
+    var defaultRoute = function ($urlRouterProvider) {
+        $urlRouterProvider.otherwise('/app');
     };
 
-    angular.module('abelhas-operarias', [])
-        .controller('IndexController', IndexController);
+    defaultRoute.$injector = ['$urlRouterProvider'];
 
+    angular.module('abelhas-operarias', ['ui.router'])
+        .config(defaultRoute);
 })();
