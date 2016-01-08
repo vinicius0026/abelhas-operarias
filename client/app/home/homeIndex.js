@@ -4,7 +4,7 @@
     var home = function ($stateProvider) {
         $stateProvider
             .state('app', {
-                //abstract: true,
+                abstract: true,
                 url: '/app',
                 templateUrl: 'app/home/homeTpl.html',
                 controller: 'HomeCtrl as vm'
