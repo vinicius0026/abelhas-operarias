@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                 }, {
                     expand: true,
                     cwd: './client',
-                    src: ['app/**/*', 'bower_components/**/*'],
+                    src: ['app/**/*', 'bower_components/**/*', 'assets/**/*'],
                     dest: './client/build/'
                 }]
             }
