@@ -1,0 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Main Production file
+//
+// This file is used to keep some specific production variables that change on development
+// environment. After set variables it import the main SCSS file (mainApp.scss)
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+$fa-font-path: '../assets/fonts' !default;
+$roboto-font-path: '../assets/fonts' !default;
+
+@import 'appMain';

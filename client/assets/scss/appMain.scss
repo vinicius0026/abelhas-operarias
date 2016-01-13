@@ -1,0 +1,98 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Theme imports
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+@import
+    // Bourbon
+'../../bower_components/bourbon/app/assets/stylesheets/bourbon',
+
+    // Variables, mixins and colors
+'./inc/mixins', // main mixins
+'./inc/colors', // colors variables
+'./inc/variables', // other variables';
+
+    //Pages
+'./pages/global', // global page settings
+'./pages/tree', // file tree settings
+'./pages/chat', // chat page settings
+'./pages/mail', // mail page settings
+'./pages/search_results', // search results page settings
+
+    //Layouts
+'./layouts/boxed', // boxed layout
+'./layouts/hz-menu', // horizontal menu
+'./layouts/rtl', // rtl layout
+
+    // Sections
+'./sections/content', // content section
+'./sections/header', // header section
+'./sections/nav', // navigation section
+'./sections/nav-min', // navigation sm/xs
+'./sections/page-header', // page header section
+'./sections/rightbar',  // rightbar section
+'./sections/page-loader', // page loader
+'./sections/add-nav', // additional navbar under breadcrumbs
+
+    // Components
+'./components/tiles', // tiles
+'./components/form-elements', // form elements
+'./components/ui-elements', // ui elements
+'./components/dropdowns', // dropdowns
+'./components/charts', // charts
+'./components/buttons', // buttons
+'./components/icons',  // icons
+'./components/lists', // lists
+'./components/media', // media
+'./components/thumbnails', // thumbnails
+'./components/typography', // typography
+'./components/loading-bar', // loading bar
+'./components/daterangepicker', // daterangepicker
+'./components/alerts-notifications', // alerts and notifications
+'./components/tabs-pills', // tabs and pills
+'./components/modals', // modals
+'./components/portlets', // portlets
+'./components/progress', // progress bars
+'./components/tbox', // table layout
+'./components/tree', // file tree
+'./components/chosen', // chosen plugin
+'./components/tables', // tables
+'./components/cards', // two sided cards
+'./components/carousel', // carousel
+'./components/widgets', // widgets
+'./components/streamline', // streamline
+'./components/maps', // maps
+'./components/calendar', // calendar
+'./components/gallery', // gallery
+'./components/material', // material design
+
+    // Shared
+'./shared/global', // global shared settings
+'./shared/color-schemes', // color schemes
+'./shared/print', // print css
+'./shared/animations'; // animations
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// General and theme imports
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+@import
+'./variables',
+'./general';
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// App imports
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@import
+//'../../app/categories/categories';
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Fonts imports
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+@import
+'../../bower_components/font-awesome/scss/font-awesome',
+'../../bower_components/roboto-fontface/css/roboto-fontface';
