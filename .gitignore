@@ -27,3 +27,4 @@ client/tmp
 !.nvmrc
 !.gitattributes
 !.bowerrc
+!client/.scss-lint.yml
