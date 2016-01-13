@@ -32,5 +32,13 @@
     "font-awesome": "~4.5.0",
     "roboto-fontface": "~0.4.3",
     "bourbon": "~4.2.6"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./dist/css/bootstrap.css",
+        "./dist/js/bootstrap.min.js"
+      ]
+    }
   }
 }
