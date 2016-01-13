@@ -413,6 +413,7 @@ module.exports = function (grunt) {
             livereload: {
                 options: {
                     open: true,
+                    port: 3000,
                     base: [
                         '<%= config.buildPath %>/'
                     ]
