@@ -1,0 +1,16 @@
+linters:
+    Indentation:
+        exclude:
+            - './assets/scss/components/*.scss'
+            - './assets/scss/inc/*.scss'
+            - './assets/scss/layouts/*.scss'
+            - './assets/scss/pages/*.scss'
+            - './assets/scss/sections/*.scss'
+            - './assets/scss/shared/*.scss'
+        width: 2
+
+    HexNotation:
+        style: uppercase
+
+    SelectorDepth:
+        max_depth: 5
