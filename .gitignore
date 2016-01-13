@@ -15,6 +15,7 @@ coverage
 client/build
 client/bower_components
 client/tmp
+client/dist
 
 ###############################################################################
 # Accept this files
