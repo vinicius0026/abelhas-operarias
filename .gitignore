@@ -14,6 +14,7 @@ node_modules
 coverage
 client/build
 client/bower_components
+client/tmp
 
 ###############################################################################
 # Accept this files
