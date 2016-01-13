@@ -1,4 +1,5 @@
 (function () {
+    /* global angular */
     'use strict';
 
     var defaultRoute = function ($urlRouterProvider) {

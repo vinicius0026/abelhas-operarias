@@ -1,8 +1,8 @@
 (function () {
+    /* global angular */
     'use strict';
 
     var HomeCtrl = function () {
-        var vm = this;
     };
 
     HomeCtrl.$inject = [];
