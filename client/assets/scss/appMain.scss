@@ -5,6 +5,7 @@
 @import
     // Bourbon
 '../../bower_components/bourbon/app/assets/stylesheets/bourbon',
+'../../bower_components/bootstrap/dist/css/bootstrap.min.css',
 
     // Variables, mixins and colors
 './inc/mixins', // main mixins
@@ -17,7 +18,7 @@
 './pages/chat', // chat page settings
 './pages/mail', // mail page settings
 './pages/search_results', // search results page settings
-
+//
     //Layouts
 './layouts/boxed', // boxed layout
 './layouts/hz-menu', // horizontal menu
