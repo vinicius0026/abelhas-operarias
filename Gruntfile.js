@@ -66,7 +66,7 @@ module.exports = function (grunt) {
             ]
         },
 
-        // TODO: fix this to add boostrap authomatically
+        // TODO: fix this to add bootstrap automatically
         // Automatically inject Bower components
         wiredep: {
             build: {
