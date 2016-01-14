@@ -1,4 +1,5 @@
 module.exports = function (app) {
+    'use strict';
 
     require('./config/express')(app);
 

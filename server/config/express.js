@@ -10,8 +10,6 @@ var bodyParser = require('body-parser'),
     errorHandler = require('errorhandler'),
     logger = require('express-bunyan-logger'),
     logDir = process.cwd() + '/logs/';
-//    seed = require('./seeds');
-//seed();
 
 module.exports = function (app) {
     app.use(function (req, res, next) {
