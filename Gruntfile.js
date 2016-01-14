@@ -355,8 +355,10 @@ module.exports = function (grunt) {
                     '<%= config.app %>/components/**/*Tpl.html'
                 ],
                 dest: '<%= config.app %>/js/templates.js',
-                rename: function (moduleName) {
-                    return moduleName.replace('../client/app/', '');
+                options: {
+                    rename: function (moduleName) {
+                        return moduleName.replace('../client/', '');
+                    }
                 }
             }
         },
