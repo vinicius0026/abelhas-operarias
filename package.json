@@ -27,7 +27,11 @@
   },
   "homepage": "https://github.com/vinicius0026/abelhas-operarias#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "errorhandler": "^1.4.2",
+    "express": "^4.13.3",
+    "express-bunyan-logger": "^1.2.0"
   },
   "devDependencies": {
     "bower": "^1.7.2",
