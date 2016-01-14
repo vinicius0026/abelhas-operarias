@@ -470,6 +470,12 @@ module.exports = function (grunt) {
             }
         },
 
+        shell: {
+            deployToHeroku: {
+                command: 'git push heroku master'
+            }
+        },
+
         // Add new app release
         release: {
             options: {
@@ -477,6 +483,7 @@ module.exports = function (grunt) {
                 additionalFiles: ['bower.json'],
                 indentation: '    ',
                 beforeBump: ['lint'],
+                afterRelease: ['deployToHeroku'],
                 github: {
                     repo: 'vinicius0026/abelhas-operarias',
                     usernameVar: 'GITHUB_USERNAME',
@@ -543,4 +550,6 @@ module.exports = function (grunt) {
         'connect:livereload',
         'watch'
     ]);
+
+    grunt.registerTask('deployToHeroku', ['shell']);
 };
