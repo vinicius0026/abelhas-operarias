@@ -40,5 +40,6 @@
         "./dist/js/bootstrap.min.js"
       ]
     }
-  }
+  },
+  "version": "0.1.0"
 }
