@@ -337,9 +337,6 @@ module.exports = function (grunt) {
                     removeRedundantAttributes: true,
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true
-                },
-                rename: function (moduleName) {
-                    return moduleName.replace('../app/', '');
                 }
             },
             build: {
@@ -347,7 +344,10 @@ module.exports = function (grunt) {
                     '<%= config.app %>/app/**/*Tpl.html',
                     '<%= config.app %>/components/**/*Tpl.html'
                 ],
-                dest: '<%= config.buildPath %>/js/templates.js'
+                dest: '<%= config.buildPath %>/js/templates.js',
+                rename: function (moduleName) {
+                    return moduleName.replace('../app/', '');
+                }
             },
             prod: {
                 src: [
@@ -355,6 +355,9 @@ module.exports = function (grunt) {
                     '<%= config.app %>/components/**/*Tpl.html'
                 ],
                 dest: '<%= config.app %>/js/templates.js'
+            },
+            rename: function (moduleName) {
+                return moduleName.replace('../client/app/', '');
             }
         },
 
