@@ -223,6 +223,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: '<%= config.app %>/',
+                        src: 'app/**/*Tpl.html',
+                        dest: '<%= config.productionPath %>/',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
                         cwd: '<%= config.distPath %>/',
                         src: ['js/**', 'css/**'],
                         dest: '<%= config.productionPath %>/'
@@ -347,18 +354,6 @@ module.exports = function (grunt) {
                 dest: '<%= config.buildPath %>/js/templates.js',
                 rename: function (moduleName) {
                     return moduleName.replace('../app/', '');
-                }
-            },
-            prod: {
-                src: [
-                    '<%= config.app %>/app/**/*Tpl.html',
-                    '<%= config.app %>/components/**/*Tpl.html'
-                ],
-                dest: '<%= config.app %>/js/templates.js',
-                options: {
-                    rename: function (moduleName) {
-                        return moduleName.replace('../client/', '');
-                    }
                 }
             }
         },
@@ -529,7 +524,6 @@ module.exports = function (grunt) {
         'lint',
         'env:prod',
         'wiredep:prod',
-        'html2js:prod',
         'copy:dist',
         'sass:prod',
         'useminPrepare',
