@@ -20,7 +20,7 @@ module.exports = function (app) {
                 cb();
             });
         },
-        cb => {
+        () => {
             app.listen(config.port, () => {
                 console.log(`App listening on port ${config.port}`);
             });

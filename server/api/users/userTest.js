@@ -1,6 +1,7 @@
 /**
  * User API Tests
  */
+/* global describe, it, before, after */
 
 'use strict';
 
@@ -21,9 +22,7 @@ describe('User API Tests', () => {
         };
 
         before(done => {
-            User.create(user, function (err, user) {
-                done(err);
-            });
+            User.create(user, done);
         });
 
         after(done => {

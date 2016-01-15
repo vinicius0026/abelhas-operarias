@@ -2,6 +2,8 @@
  * User Model
  */
 
+'use strict';
+
 var crypto = require('crypto'),
     moment = require('moment'),
     mongoose = require('mongoose'),
