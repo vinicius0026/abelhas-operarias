@@ -7,3 +7,5 @@ var express = require('express'),
 app.use(express.static(`${__dirname}/client/build`));
 
 require('./server/app.js')(app);
+
+module.exports = app;
