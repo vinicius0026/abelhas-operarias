@@ -44,15 +44,6 @@ UserSchema
     .get(function () {
         return this._password;
     });
-//
-//UserSchema.virtual('id')
-//    .get(function () {
-//        return this._id.toHexString();
-//    });
-//
-//UserSchema.set('toObject', {
-//    virtuals: true
-//});
 
 var validatePresenceOf = function (value) {
     return value && value.length;
