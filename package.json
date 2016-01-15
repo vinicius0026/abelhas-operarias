@@ -28,6 +28,7 @@
   "homepage": "https://github.com/vinicius0026/abelhas-operarias#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "chai": "^3.4.1",
     "composable-middleware": "^0.3.0",
     "cookie-parser": "^1.4.1",
     "errorhandler": "^1.4.2",
@@ -35,6 +36,7 @@
     "express-bunyan-logger": "^1.2.0",
     "express-jwt": "^3.3.0",
     "jsonwebtoken": "^5.5.4",
+    "moment": "^2.11.1",
     "mongoose": "^4.3.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
