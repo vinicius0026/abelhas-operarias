@@ -12,7 +12,7 @@ var _ = require('lodash'),
 
     all = {
         env: process.env.NODE_ENV || 'dev',
-        port: 3000,
+        port: process.env.PORT || 3000,
         db: {
             baseUrl: 'mongodb://localhost/'
         },
