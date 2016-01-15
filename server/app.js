@@ -15,7 +15,9 @@ module.exports = function (app) {
         cb => {
             mongoose.connect(MONGODB_URI, {}, err => {
                 if (err) {
-                    throw new Error('Unable to connect to MongoDB');
+                    console.log('Unable to connect to mongodb');
+                    console.log(err);
+                    return cb(err);
                 }
                 cb();
             });
