@@ -6,6 +6,7 @@
 
 module.exports = {
     db: {
+        baseUrl: 'mongodb://localhost/',
         appDB: 'abelhas-operarias-dev'
     }
 };

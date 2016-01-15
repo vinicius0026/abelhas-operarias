@@ -13,9 +13,6 @@ var _ = require('lodash'),
     all = {
         env: process.env.NODE_ENV || 'dev',
         port: process.env.PORT || 3000,
-        db: {
-            baseUrl: 'mongodb://localhost/'
-        },
         secrets: {
             session: process.env.APP_SECRET || 'fc7856d00b08ccb205f2ac1d6aada4d5'
         }
