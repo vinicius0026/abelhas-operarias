@@ -1,10 +1,29 @@
 module.exports = function (app) {
     'use strict';
 
-    require('./config/express')(app);
-    var config = require('./config/environment');
+    var async = require('async'),
+        mongoose = require('mongoose'),
 
-    app.listen(config.port, () => {
-        console.log(`App listening on port ${port}`);
-    });
+        config = require('./config/environment'),
+
+        MONGODB_URI = config.db.baseUrl + config.db.appDB;
+
+    require('./config/express')(app);
+    require('./routes')(app);
+
+    async.series([
+        cb => {
+            mongoose.connect(MONGODB_URI, {}, err => {
+                if (err) {
+                    throw new Error('Unable to connect to MongoDB');
+                }
+                cb();
+            });
+        },
+        cb => {
+            app.listen(config.port, () => {
+                console.log(`App listening on port ${config.port}`);
+            });
+        }
+    ]);
 };
