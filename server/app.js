@@ -10,6 +10,7 @@ module.exports = function (app) {
 
     require('./config/express')(app);
     require('./routes')(app);
+    require('./config/seeds')();
 
     async.series([
         cb => {
