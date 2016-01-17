@@ -14,7 +14,7 @@ var User = require('../api/users/userModel'),
             if (n === 0) {
                 User.create({username: defaultUsername, password: defaultPassword, name: 'Admin'});
             }
-        })
+        });
     };
 
 module.exports = seed;
