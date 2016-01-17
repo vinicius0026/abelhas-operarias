@@ -29,3 +29,4 @@ client/dist
 !.gitattributes
 !.bowerrc
 !client/.scss-lint.yml
+!.keep
