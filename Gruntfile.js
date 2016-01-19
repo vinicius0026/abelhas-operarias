@@ -427,7 +427,7 @@ module.exports = function (grunt) {
                         var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
 
                         // Serve static files.
-                        options.base.forEach(function(base) {
+                        options.base.forEach(function (base) {
                             middlewares.push(serveStatic(base));
                         });
 

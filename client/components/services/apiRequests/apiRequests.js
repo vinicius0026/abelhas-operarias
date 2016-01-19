@@ -1,4 +1,6 @@
 (function () {
+    /* global angular */
+
     'use strict';
 
     var ApiRequests = function ($http, $q) {

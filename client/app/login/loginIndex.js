@@ -1,4 +1,6 @@
 (function () {
+    /* global angular */
+
     'use strict';
 
     var loginRoute = function ($stateProvider) {

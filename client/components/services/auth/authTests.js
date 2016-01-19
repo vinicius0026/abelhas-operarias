@@ -1,6 +1,5 @@
-/* globals sinon, beforeEach, afterEach, inject, describe, it, expect */
-
 (function () {
+    /* globals angular, sinon, beforeEach, afterEach, inject, describe, it, expect */
     'use strict';
 
     var Auth,

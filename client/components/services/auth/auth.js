@@ -1,4 +1,6 @@
 (function () {
+    /* global angular, $ */
+
     'use strict';
 
     var Auth = function ($rootScope, $http, $q, AUTH_URL, ApiRequests) {

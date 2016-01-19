@@ -1,4 +1,6 @@
 (function () {
+    /* global angular */
+
     'use strict';
 
     var AUTH_URL = '/auth/local';

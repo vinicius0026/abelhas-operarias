@@ -1,6 +1,8 @@
 /* globals inject, beforeEach, afterEach, describe, it, expect */
 
 (function () {
+    /* global angular */
+
     'use strict';
 
     var apiUrl = 'http://api.fiddus.com.br:9000',
