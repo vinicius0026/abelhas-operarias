@@ -30,7 +30,17 @@
 
     defaultRoute.$injector = ['$urlRouterProvider'];
 
-    angular.module('abelhas-operarias', ['ui.router'])
+    var dependencies = [
+        // External
+        'ui.router',
+        'toastr',
+        // App
+        'constants-auth-events',
+        'factory-api-requests',
+        'factory-auth'
+    ];
+
+    angular.module('abelhas-operarias', dependencies)
         .config(defaultRoute)
         .run(runApp);
 })();
