@@ -15,8 +15,6 @@
                     }, function () {
                         toastr.error('Nome de usuário ou senha incorretos');
                     });
-                    console.log('username', username);
-                    console.log('password', password);
                 } else {
                     toastr.error('Preencha o nome de usuário e a senha para realizar login.', 'Erro');
                 }
