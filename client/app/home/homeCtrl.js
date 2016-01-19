@@ -2,10 +2,18 @@
     /* global angular */
     'use strict';
 
-    var HomeCtrl = function () {
+    var HomeCtrl = function ($state, Auth) {
+        var vm = this,
+
+            logout = function () {
+                Auth.logout();
+                $state.go('login');
+            };
+
+        vm.logout = logout;
     };
 
-    HomeCtrl.$inject = [];
+    HomeCtrl.$inject = ['$state', 'Auth'];
 
     angular.module('abelhas-operarias')
         .controller('HomeCtrl', HomeCtrl);

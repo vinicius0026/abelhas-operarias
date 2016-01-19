@@ -30,6 +30,27 @@
 
     defaultRoute.$injector = ['$urlRouterProvider'];
 
+    // Check authenticated route
+    var checkAuthRoutes = function ($rootScope, $state, Auth, AUTH_EVENTS) {
+        var onNotAuthenticated = function () {
+                Auth.logout();
+                $state.go('login', {});
+            },
+
+            stateChangeStart = function (event, toState) {
+
+                if (toState.name !== 'login' && !Auth.isAuthenticated()) {
+                    event.preventDefault();
+                    onNotAuthenticated();
+                }
+            };
+
+        $rootScope.$on(AUTH_EVENTS.notAuthenticated, onNotAuthenticated);
+        $rootScope.$on('$stateChangeStart', stateChangeStart);
+    };
+
+    checkAuthRoutes.$inject = ['$rootScope', '$state', 'Auth', 'AUTH_EVENTS'];
+
     var dependencies = [
         // External
         'ui.router',
@@ -42,5 +63,6 @@
 
     angular.module('abelhas-operarias', dependencies)
         .config(defaultRoute)
+        .run(checkAuthRoutes)
         .run(runApp);
 })();
