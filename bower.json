@@ -31,7 +31,8 @@
     "bootstrap": "~3.3.6",
     "font-awesome": "~4.5.0",
     "roboto-fontface": "~0.4.3",
-    "bourbon": "~4.2.6"
+    "bourbon": "~4.2.6",
+    "angular-toastr": "~1.6.0"
   },
   "overrides": {
     "bootstrap": {
