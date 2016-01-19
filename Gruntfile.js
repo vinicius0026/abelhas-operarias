@@ -11,7 +11,8 @@ module.exports = function (grunt) {
             distPath: './client/dist',
             buildPath: grunt.option('path') || './client/build',
             productionPath: grunt.option('path') || './client/build'
-        };
+        },
+        serveStatic = require('serve-static');
 
     timer.init(grunt, {
         friendlyTime: false,
@@ -416,8 +417,29 @@ module.exports = function (grunt) {
                     port: 3000,
                     base: [
                         '<%= config.buildPath %>/'
-                    ]
-                }
+                    ],
+                    middleware: function (connect, options) {
+                        if (!Array.isArray(options.base)) {
+                            options.base = [options.base];
+                        }
+
+                        // Setup the proxy
+                        var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
+                        // Serve static files.
+                        options.base.forEach(function(base) {
+                            middlewares.push(serveStatic(base));
+                        });
+
+                        return middlewares;
+                    }
+                },
+                proxies: [{
+                    context: '/auth',
+                    host: 'localhost',
+                    port: 4000,
+                    https: false
+                }]
             },
             test: {
                 options: {
@@ -547,6 +569,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('serve', [
         'build',
+        'configureProxies:livereload',
         'connect:livereload',
         'watch'
     ]);
