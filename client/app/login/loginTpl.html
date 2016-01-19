@@ -1,0 +1,26 @@
+<div class="page page-core page-login" style="background-color: aquamarine">
+
+    <div class="text-center"><h3 class="text-light">ABELHAS OPERÁRIAS</div>
+
+    <div class="container w-420 p-15 bg-white mt-40 text-center">
+
+        <h2 class="text-light text-greensea">Log In</h2>
+
+        <form name="vm.form" class="form-validation mt-20" novalidate>
+
+            <div class="form-group">
+                <input type="text" class="form-control underline-input" placeholder="Nome de Usuário" ng-model="vm.username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" placeholder="Senha" class="form-control underline-input" ng-model="vm.password" required>
+            </div>
+
+            <div class="bg-slategray lt wrap-reset mt-40 hand" ng-click="vm.login(vm.username, vm.password)">
+                <p class="m-0 text-uppercase">Entrar</p>
+            </div>
+
+        </form>
+
+    </div>
+</div>
