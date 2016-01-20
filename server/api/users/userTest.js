@@ -113,7 +113,7 @@ describe('User API Tests', () => {
     });
 
     describe('Fetch Users Test', () => {
-        var users = [1,2,3,4].map(n => {
+        var users = [1, 2, 3, 4].map(n => {
             return {
                 name: `user${n}`,
                 username: `user${n}`,

@@ -1,4 +1,5 @@
 (function () {
+    /* global angular */
     'use strict';
 
     var UsersTableCtrl = function ($compile, $scope, DTOptionsBuilder, DTColumnBuilder, USERS_URLS, DT_LANGUAGE) {
