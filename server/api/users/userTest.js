@@ -5,7 +5,8 @@
 
 'use strict';
 
-var expect = require('chai').expect,
+var async = require('async'),
+    expect = require('chai').expect,
     request = require('supertest'),
 
     app = require('../../../server'),
@@ -51,6 +52,63 @@ describe('User API Tests', () => {
                     username: user.username,
                     password: 'wrongPassword'
                 })
+                .expect(401)
+                .end(done);
+        });
+    });
+
+    describe('Create User Tests', () => {
+        var admin = {
+                name: 'Master',
+                username: 'master',
+                password: 'masterpass'
+            },
+            user1 = {
+                name: 'User',
+                username: 'user',
+                password: 'userpass'
+            },
+            user2 = {
+                name: 'User2',
+                username: 'user2',
+                password: 'user2pass'
+            },
+            adminAuth;
+
+        before(done => {
+            async.series([
+                cb => User.create(admin, cb),
+                cb => request(app)
+                    .post('/auth/local')
+                    .send({username: admin.username, password: admin.password})
+                    .expect(res => {
+                        adminAuth = `Bearer ${res.body.data.token}`;
+                    })
+                    .end(cb)
+            ], err => done(err));
+        });
+
+        after(done => {
+            User.remove({}, done);
+        });
+
+        it('should be able to create a user if authenticated', done => {
+            request(app)
+                .post('/api/users')
+                .set('authorization', adminAuth)
+                .send(user1)
+                .expect(201)
+                .expect(res => {
+                    var createdUser = res.body.data;
+                    expect(createdUser.username).to.equal(user1.username);
+                })
+                .end(done);
+        });
+
+        it('should not be able to create user if not authenticated', done => {
+            request(app)
+                .post('/api/users')
+                .send(user2)
                 .expect(401)
                 .end(done);
         });
