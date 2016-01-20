@@ -9,7 +9,7 @@
                 controller: 'UsersCtrl as vm'
             })
             .state('app.createUser', {
-                url: '/criarUsuario',
+                url: '/usuarios/criar',
                 templateUrl: 'app/users/create/createUserTpl.html',
                 controller: 'CreateUserCtrl as vm'
             });
