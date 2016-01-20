@@ -13,6 +13,16 @@ var async = require('async'),
     User = require('./userModel');
 
 describe('User API Tests', () => {
+
+    var admin = {
+            name: 'Master',
+            username: 'master',
+            password: 'masterpass'
+        },
+        adminAuth;
+
+    after(done => User.remove({}, done));
+
     describe('User login tests', () => {
 
         var user = {
@@ -22,13 +32,9 @@ describe('User API Tests', () => {
             email: 'user@gmail.com'
         };
 
-        before(done => {
-            User.create(user, done);
-        });
+        before(done => User.create(user, done));
 
-        after(done => {
-            User.remove({}, done);
-        });
+        after(done => User.remove({}, done));
 
         it('should be able to login a manually create user', done => {
             request(app)
@@ -58,12 +64,7 @@ describe('User API Tests', () => {
     });
 
     describe('Create User Tests', () => {
-        var admin = {
-                name: 'Master',
-                username: 'master',
-                password: 'masterpass'
-            },
-            user1 = {
+        var user1 = {
                 name: 'User',
                 username: 'user',
                 password: 'userpass'
@@ -72,13 +73,12 @@ describe('User API Tests', () => {
                 name: 'User2',
                 username: 'user2',
                 password: 'user2pass'
-            },
-            adminAuth;
+            };
 
         before(done => {
             async.series([
-                cb => User.create(admin, cb),
-                cb => request(app)
+                    cb => User.create(admin, cb),
+                    cb => request(app)
                     .post('/auth/local')
                     .send({username: admin.username, password: admin.password})
                     .expect(res => {
@@ -88,9 +88,7 @@ describe('User API Tests', () => {
             ], err => done(err));
         });
 
-        after(done => {
-            User.remove({}, done);
-        });
+        after(done => User.remove({}, done));
 
         it('should be able to create a user if authenticated', done => {
             request(app)
@@ -110,6 +108,82 @@ describe('User API Tests', () => {
                 .post('/api/users')
                 .send(user2)
                 .expect(401)
+                .end(done);
+        });
+    });
+
+    describe('Fetch Users Test', () => {
+        var users = [1,2,3,4].map(n => {
+            return {
+                name: `user${n}`,
+                username: `user${n}`,
+                password: `pass${n}`
+            };
+        });
+
+        before(done => {
+            async.series([
+                cb => async.each(users, (user, cb) => User.spawn(user, cb), err => cb(err)),
+                cb => User.create(admin, cb),
+                cb => request(app)
+                    .post('/auth/local')
+                    .send({username: admin.username, password: admin.password})
+                    .expect(res => {
+                        adminAuth = `Bearer ${res.body.data.token}`;
+                    })
+                    .end(cb)
+            ], err => done(err));
+        });
+
+        after(done => User.remove({}, done));
+
+        it('should be able to fetch users, if authenticated', done => {
+            request(app)
+                .post('/api/users/fetch')
+                .set('authorization', adminAuth)
+                .send({
+                    draw: 1,
+                    start: 0,
+                    length: 10,
+                    columns: [{
+                        data: 'name',
+                        searchable: true,
+                        orderable: true
+                    }, {
+                        data: 'username',
+                        searchable: true,
+                        orderable: true
+                    }, {
+                        data: 'email',
+                        searchable: true,
+                        orderable: true
+                    }],
+                    order: [{
+                        column: '0',
+                        dir: 'asc'
+                    }],
+                    search: {
+                        value: ''
+                    }
+                })
+                .expect(200)
+                .expect(res => {
+                    var results = res.body.data,
+                        mappedResults = results.map(user => {
+                            return {
+                                name: user.name,
+                                username: user.username
+                            };
+                        });
+                    mappedResults.shift();
+                    expect(mappedResults.length).to.equal(4);
+                    expect(mappedResults).to.deep.equal(users.map(user => {
+                        return {
+                            username: user.username,
+                            name: user.name
+                        };
+                    }));
+                })
                 .end(done);
         });
     });
