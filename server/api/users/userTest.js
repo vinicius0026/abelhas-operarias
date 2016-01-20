@@ -43,5 +43,16 @@ describe('User API Tests', () => {
                 })
                 .end(done);
         });
+
+        it('should not be able to login if password is wrong', done => {
+            request(app)
+                .post('/auth/local')
+                .send({
+                    username: user.username,
+                    password: 'wrongPassword'
+                })
+                .expect(401)
+                .end(done);
+        });
     });
 });
