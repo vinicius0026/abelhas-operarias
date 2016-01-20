@@ -14,7 +14,7 @@
                 one: function (id) {
                     base.concat('/:id').replace(':id', id);
                 }
-            }
+            };
         })();
 
     angular.module('abelhas-operarias')

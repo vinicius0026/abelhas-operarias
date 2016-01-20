@@ -1,8 +1,8 @@
 (function () {
+    /* global angular */
     'use strict';
 
     var UsersCtrl = function () {
-        var vm = this;
 
     };
 

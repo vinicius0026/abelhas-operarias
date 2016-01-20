@@ -1,4 +1,5 @@
 (function () {
+    /* global angular */
     'use strict';
 
     var CreateUserCtrl = function ($state, usersService, toastr) {
@@ -6,7 +7,7 @@
             createUser = function (user) {
                 if (vm.form.$valid) {
                     usersService.create(user)
-                        .then(function (res) {
+                        .then(function () {
                             toastr.success('Usuário criado com sucesso');
                             $state.go('app.users');
                         },

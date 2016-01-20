@@ -1,4 +1,5 @@
 (function () {
+    /* global angular */
     'use strict';
 
     var usersService = function (ApiRequests, USERS_URLS) {
@@ -20,4 +21,4 @@
 
     angular.module('abelhas-operarias')
         .factory('usersService', usersService);
- })();
+})();

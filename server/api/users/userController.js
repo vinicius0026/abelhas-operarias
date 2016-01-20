@@ -2,6 +2,8 @@
  * User API Controller
  */
 
+'use strict';
+
 var errorHandler = require('../../lib/util/errorHandler'),
     User = require('./userModel'),
 
