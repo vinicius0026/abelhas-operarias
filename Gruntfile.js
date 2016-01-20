@@ -439,6 +439,11 @@ module.exports = function (grunt) {
                     host: 'localhost',
                     port: 4000,
                     https: false
+                }, {
+                    context: '/api',
+                    host: 'localhost',
+                    port: 4000,
+                    https: false
                 }]
             },
             test: {
