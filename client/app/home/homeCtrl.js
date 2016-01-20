@@ -10,6 +10,8 @@
                 $state.go('login');
             };
 
+        Auth.refreshToken();
+
         vm.logout = logout;
     };
 
