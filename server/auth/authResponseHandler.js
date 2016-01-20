@@ -9,7 +9,7 @@ var passport = require('passport'),
                 var error = err || info;
 
                 if (error) {
-                    return res.send(error);
+                    return res.status(401).send(error);
                 }
 
                 if (!user) {
@@ -18,7 +18,9 @@ var passport = require('passport'),
 
                 var token = auth.signToken(user);
 
-                res.json({
+                res.send({
+                    ok: true,
+                    info: 'Logged in successfully',
                     data: {
                         name: user.name,
                         username: user.username,
