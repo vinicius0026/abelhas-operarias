@@ -32,13 +32,28 @@
     "font-awesome": "~4.5.0",
     "roboto-fontface": "~0.4.3",
     "bourbon": "~4.2.6",
-    "angular-toastr": "~1.6.0"
+    "angular-toastr": "~1.6.0",
+    "oclazyload": "~1.0.9",
+    "angular-datatables": "~0.5.2"
   },
   "overrides": {
     "bootstrap": {
       "main": [
         "./dist/css/bootstrap.css",
         "./dist/js/bootstrap.min.js"
+      ]
+    },
+    "angular-datatables": {
+      "main": [
+        "./dist/angular-datatables.min.js",
+        "./dist/plugins/bootstrap/angular-datatables.bootstrap.min.js",
+        "./dist/plugins/colreorder/angular-datatables.colreorder.min.js",
+        "./dist/plugins/columnfilter/angular-datatables.columnfilter.min.js",
+        "./dist/plugins/colvis/angular-datatables.colvis.min.js",
+        "./dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.min.js",
+        "./dist/plugins/fixedheader/angular-datatables.fixedheader.min.js",
+        "./dist/plugins/scroller/angular-datatables.scroller.min.js",
+        "./dist/plugins/tabletools/angular-datatables.tabletools.min.js"
       ]
     }
   },

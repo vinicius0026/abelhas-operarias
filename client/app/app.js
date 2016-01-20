@@ -52,13 +52,21 @@
     checkAuthRoutes.$inject = ['$rootScope', '$state', 'Auth', 'AUTH_EVENTS'];
 
     var dependencies = [
-        // External
+        // Vendor
         'ui.router',
         'toastr',
+        'datatables',
+        'datatables.bootstrap',
+        'datatables.colreorder',
+        'datatables.columnfilter',
+        'datatables.colvis',
+        'datatables.scroller',
+        'datatables.tabletools',
         // App
         'constants-auth-events',
         'factory-api-requests',
-        'factory-auth'
+        'factory-auth',
+        'constants-datatables'
     ];
 
     angular.module('abelhas-operarias', dependencies)
