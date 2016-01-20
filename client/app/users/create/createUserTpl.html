@@ -1,0 +1,97 @@
+<div class="page page-create-user">
+
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <div class="add-nav">
+
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font">Criar <strong>Usuário</strong></h1>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body">
+
+                            <form class="form-horizontal" role="form" name="vm.form">
+
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Nome:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name"
+                                               placeholder="Nome Completo" ng-model="vm.user.name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">Email:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email"
+                                               placeholder="Email Válido" ng-model="vm.user.email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label">Nome de Usuário: <span
+                                        class="text-lightred text-md">*</span></label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="username"
+                                               placeholder="Utilizado para fazer o login" ng-model="vm.user.username" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">Senha: <span
+                                        class="text-lightred text-md">*</span></label>
+
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password"
+                                               placeholder="Senha" ng-model="vm.user.password" required>
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+                            <div class="row">
+                                <span class="controls pull-right">
+                                      <a ui-sref="app.users" class="btn btn-ef btn-ef-1 btn-ef-1-default btn-ef-1a btn-rounded-20 mr-5"
+                                         tooltip="Voltar"><i class="fa fa-arrow-left"></i></a>
+                                      <a href="" ng-click="vm.createUser(vm.user)" class="btn btn-ef btn-ef-1 btn-ef-1-success btn-ef-1a btn-rounded-20 mr-5"
+                                         tooltip="Salvar"><i class="fa fa-check"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /tile body -->
+
+                    </section>
+                    <!-- /tile -->
+
+
+                </div>
+                <!-- /col -->
+
+            </div>
+            <!-- /row -->
+
+
+        </div>
+
+
+    </div>
+    <!-- /page content -->
+
+
+</div>
