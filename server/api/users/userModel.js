@@ -5,10 +5,13 @@
 'use strict';
 
 var crypto = require('crypto'),
+    mask = require('json-mask'),
     moment = require('moment'),
     mongoose = require('mongoose'),
 
     Schema = mongoose.Schema,
+    userCreateMask = 'name,email,username,password',
+    userMask = 'id,name,email,username',
     User,
 
     UserSchema = new Schema({
@@ -84,6 +87,12 @@ UserSchema.methods = {
         var salt = new Buffer(this.salt, 'base64');
 
         return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+    }
+};
+
+UserSchema.statics = {
+    spawn: function (data, callback) {
+        User.create(mask(data, userCreateMask), (err, user) => callback(err, mask(user, userMask)));
     }
 };
 
