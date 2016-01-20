@@ -4,7 +4,9 @@
 
 'use strict';
 
-var errorHandler = require('../../lib/util/errorHandler'),
+var datatablesQuery = require('datatables-query'),
+
+    errorHandler = require('../../lib/util/errorHandler'),
     User = require('./userModel'),
 
     userController = {
@@ -21,6 +23,12 @@ var errorHandler = require('../../lib/util/errorHandler'),
                         data: user
                     });
             });
+        },
+        fetch: function (req, res) {
+            var params = req.body,
+                query = datatablesQuery(User);
+
+            query.run(params).then(data => res.send(data), err => errorHandler(err, res));
         }
     };
 
