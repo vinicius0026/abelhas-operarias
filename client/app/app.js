@@ -51,6 +51,14 @@
 
     checkAuthRoutes.$inject = ['$rootScope', '$state', 'Auth', 'AUTH_EVENTS'];
 
+    // Http Providers
+    var httpProviders = function ($httpProvider) {
+        $httpProvider.interceptors.push('httpAuthInterceptor');
+    };
+
+
+    httpProviders.$inject = ['$httpProvider'];
+
     var dependencies = [
         // Vendor
         'ui.router',
@@ -66,10 +74,12 @@
         'constants-auth-events',
         'factory-api-requests',
         'factory-auth',
-        'constants-datatables'
+        'constants-datatables',
+        'http-auth-interceptor'
     ];
 
     angular.module('abelhas-operarias', dependencies)
+        .config(httpProviders)
         .config(defaultRoute)
         .run(checkAuthRoutes)
         .run(runApp);
