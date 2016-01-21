@@ -34,12 +34,16 @@ var config = require('../config/environment'),
                     validateJwt(req, res, next);
                 })
                 // Attach user to request
-                .use(function (req, res, next) {
+                .use(function (err, req, res, next) {
+                    if (err) {
+                        return res.status(401).json({ok: false, info: 'Invalid or expired token'});
+                    }
+
                     if (req.user && req.user._id) {
                         User.findById(req.user._id, function (err, user) {
 
                             if (err) {
-                                return next(err);
+                                return res.status(401).json({ok: false, info: 'User not found'});
                             }
 
                             if (!user && credentialsRequired) {
