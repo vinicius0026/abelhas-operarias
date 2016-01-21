@@ -9,7 +9,10 @@
             .withBootstrap()
             .withOption('ajax', {
                 url: USERS_URLS.fetch,
-                type: 'POST'
+                type: 'POST',
+                error: function () {
+                    // doing nothing with the error... just avoiding the annoying popup
+                }
             })
             .withDataProp('data')
             .withOption('processing', true)
