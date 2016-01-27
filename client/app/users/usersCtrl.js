@@ -7,9 +7,14 @@
 
             editUser = function (userId) {
                 $state.go('app.user', {action: 'editar', id: userId});
+            },
+
+            viewUser = function (userId) {
+                $state.go('app.user', {action: 'visualizar', id: userId});
             };
 
         vm.editUser = editUser;
+        vm.viewUser = viewUser;
     };
 
     UsersCtrl.$inject = ['$state'];
