@@ -112,6 +112,49 @@ describe('User API Tests', () => {
         });
     });
 
+    describe('Read User Tests', () => {
+        var user = {
+                name: 'user',
+                username: 'user',
+                password: 'pass'
+            },
+            userId;
+
+        before(done => {
+            async.series([
+                cb => User.create(admin, cb),
+                cb => request(app)
+                    .post('/auth/local')
+                    .send({username: admin.username, password: admin.password})
+                    .expect(res => {
+                        adminAuth = `Bearer ${res.body.data.token}`;
+                    })
+                    .end(cb),
+                cb => User.create(user, (err, user) => {
+                        userId = user._id;
+                        cb(err);
+                    })
+            ], err => done(err));
+
+        });
+
+        after(done => User.remove({}, done));
+
+        it('should be able to read user profile if authenticated', done => {
+            request(app)
+                .get(`/api/users/${userId}`)
+                .set('authorization', adminAuth)
+                .expect(200)
+                .expect(res => {
+                    var _user = res.body.data;
+                    expect(_user.name).to.equal(user.name);
+                    expect(_user.email).to.equal(user.email);
+                    expect(_user.username).to.equal(user.username);
+                })
+                .end(done);
+        });
+    });
+
     describe('Fetch Users Test', () => {
         var users = [1, 2, 3, 4].map(n => {
             return {

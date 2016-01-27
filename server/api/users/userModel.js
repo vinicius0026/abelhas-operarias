@@ -87,6 +87,10 @@ UserSchema.methods = {
         var salt = new Buffer(this.salt, 'base64');
 
         return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+    },
+
+    read: function (callback) {
+        callback(null, mask(this, userMask));
     }
 };
 

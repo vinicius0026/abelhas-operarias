@@ -29,6 +29,39 @@ var datatablesQuery = require('datatables-query'),
                 query = datatablesQuery(User);
 
             query.run(params).then(data => res.send(data), err => errorHandler(err, res));
+        },
+
+        read: function (req, res) {
+            var user = req.fiddus.user;
+
+            user.read((err, data) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.send({
+                    ok: true,
+                    info: `Got user ${user.id}`,
+                    data: data
+                });
+            });
+
+        },
+
+        insertUserInRequest: function (req, res, next) {
+            var userId = req.params.id;
+
+            req.fiddus = {};
+
+            User.findById(userId, (err, user) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+
+                req.fiddus.user = user;
+                next();
+            });
         }
     };
 
