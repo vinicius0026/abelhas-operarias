@@ -71,6 +71,7 @@
         'datatables.colvis',
         'datatables.scroller',
         'datatables.tabletools',
+        'ui.bootstrap',
         // App
         'constants-auth-events',
         'factory-api-requests',
