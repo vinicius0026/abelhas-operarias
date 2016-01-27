@@ -2,8 +2,9 @@
     /* global angular */
     'use strict';
 
-    var CreateUserCtrl = function ($state, usersService, toastr) {
+    var UserCtrl = function ($state, $stateParams, usersService, toastr) {
         var vm = this,
+
             createUser = function (user) {
                 if (vm.form.$valid) {
                     usersService.create(user)
@@ -17,14 +18,45 @@
                 } else {
                     toastr.error('Preencha todos os campos obrigatórios');
                 }
-            };
+            },
+
+            fetchUser = function (userId) {
+                if ($stateParams.action === 'editar') {
+                    usersService.get(userId)
+                        .then(function (res) {
+                            console.log('res', res);
+                            //vm.user = res.data.data;
+                        }, function () {
+                            toastr.error('Erro ao ler dados do usuário');
+                        });
+                } else {
+                    vm.user = {};
+                }
+
+            },
+
+            updateUser = function (userData, userId) {
+
+            },
+
+            saveUser = function (userData) {
+                if ($stateParams.action === 'criar') {
+                    createUser(userData);
+                } else if ($stateParams.action === 'editar') {
+                    updateUser(userData, $stateParams.id);
+                }
+
+            }
+
+        fetchUser($stateParams.id);
 
         vm.createUser = createUser;
+        vm.saveUser = saveUser;
     };
 
-    CreateUserCtrl.$inject = ['$state', 'usersService', 'toastr'];
+    UserCtrl.$inject = ['$state', '$stateParams', 'usersService', 'toastr'];
 
 
     angular.module('abelhas-operarias')
-        .controller('CreateUserCtrl', CreateUserCtrl);
+        .controller('UserCtrl', UserCtrl);
 })();
