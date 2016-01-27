@@ -12,7 +12,8 @@ var User = require('../api/users/userModel'),
     seed = function () {
         User.count({name: defaultUsername}, (err, n) => {
             if (n === 0) {
-                User.create({username: defaultUsername, password: defaultPassword, name: 'Admin'});
+                User.create({username: defaultUsername,
+                    password: defaultPassword, name: 'Admin'});
             }
         });
     };

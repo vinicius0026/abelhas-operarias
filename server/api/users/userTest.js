@@ -166,7 +166,8 @@ describe('User API Tests', () => {
 
         before(done => {
             async.series([
-                cb => async.each(users, (user, cb) => User.spawn(user, cb), err => cb(err)),
+                cb => async.each(users, (user, cb) => User.spawn(user, cb),
+                        err => cb(err)),
                 cb => User.create(admin, cb),
                 cb => request(app)
                     .post('/auth/local')

@@ -10,7 +10,8 @@
             setToken = function (token) {
                 if (window.localStorage) {
                     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
-                    $http.defaults.headers.common.Authorization = 'Bearer ' + token;
+                    $http.defaults.headers.common.Authorization =
+                        'Bearer ' + token;
                     $.ajaxSetup({
                         headers: {
                             'Authorization': 'Bearer ' + token
@@ -36,7 +37,8 @@
                 var token = getToken();
 
                 if (token) {
-                    $http.defaults.headers.common.Authorization = 'Bearer ' + token;
+                    $http.defaults.headers.common.Authorization =
+                        'Bearer ' + token;
 
                     $.ajaxSetup({
                         headers: {
@@ -62,12 +64,15 @@
 
                 ApiRequests.req(configs)
                     .then(function (res) {
-                        if (res && res.data && res.data.data && res.data.data.token) {
+                        if (res && res.data && res.data.data &&
+                            res.data.data.token) {
+
                             var token = res.data.data.token;
                             setToken(token);
                             defer.resolve(res);
                         } else {
-                            defer.reject(new Error('No token found in the response!'));
+                            defer.reject(new Error('No token found in the' +
+                                ' response!'));
                         }
                     }, function (err, status) {
                         if (status === 401) {

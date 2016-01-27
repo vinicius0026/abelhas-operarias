@@ -16,7 +16,8 @@
                         toastr.error('Nome de usuário ou senha incorretos');
                     });
                 } else {
-                    toastr.error('Preencha o nome de usuário e a senha para realizar login.', 'Erro');
+                    toastr.error('Preencha o nome de usuário e a senha ' +
+                        'para realizar login.', 'Erro');
                 }
             };
 

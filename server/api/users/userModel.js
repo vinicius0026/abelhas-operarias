@@ -96,7 +96,8 @@ UserSchema.methods = {
 
 UserSchema.statics = {
     spawn: function (data, callback) {
-        User.create(mask(data, userCreateMask), (err, user) => callback(err, mask(user, userMask)));
+        User.create(mask(data, userCreateMask), (err, user) =>
+            callback(err, mask(user, userMask)));
     }
 };
 

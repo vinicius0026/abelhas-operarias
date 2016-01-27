@@ -21,14 +21,15 @@ var config = require('../config/environment'),
 
         return function () {
             return compose()
-                // Allow accessToken to be passed through query parameter as well
                 .use(function (req, res, next) {
                     if (req.query && req.query.hasOwnProperty('accessToken')) {
-                        req.headers.authorization = 'Bearer ' + req.query.accessToken;
+                        req.headers.authorization =
+                            'Bearer ' + req.query.accessToken;
                     }
 
                     if (!req.headers.authorization && credentialsRequired) {
-                        return res.status(401).json({ok: false, info: 'Unauthorized access'});
+                        return res.status(401).json({ok: false,
+                            info: 'Unauthorized access'});
                     }
 
                     validateJwt(req, res, next);
@@ -36,18 +37,21 @@ var config = require('../config/environment'),
                 // Attach user to request
                 .use(function (err, req, res, next) {
                     if (err) {
-                        return res.status(401).json({ok: false, info: 'Invalid or expired token'});
+                        return res.status(401).json({ok: false,
+                            info: 'Invalid or expired token'});
                     }
 
                     if (req.user && req.user._id) {
                         User.findById(req.user._id, function (err, user) {
 
                             if (err) {
-                                return res.status(401).json({ok: false, info: 'User not found'});
+                                return res.status(401).json({ok: false,
+                                    info: 'User not found'});
                             }
 
                             if (!user && credentialsRequired) {
-                                return res.status(401).json({ok: false, info: 'User not found'});
+                                return res.status(401).json({ok: false,
+                                    info: 'User not found'});
                             }
 
                             req.user = user;
@@ -82,7 +86,8 @@ var config = require('../config/environment'),
      */
     setTokenCookie = function (req, res) {
         if (!req.user) {
-            return res.status(404).json({ok: false, info: 'Something went wrong, please try again.'});
+            return res.status(404).json({ok: false,
+                info: 'Something went wrong, please try again.'});
         }
 
         var token = signToken(req.user);

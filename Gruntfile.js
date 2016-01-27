@@ -21,9 +21,9 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
-        /************************************************************************
+        /**********************************************************************
          * General Configurations
-         ************************************************************************/
+         **********************************************************************/
 
         config: configs,
 
@@ -75,7 +75,8 @@ module.exports = function (grunt) {
                 exclude: [
                     './client/bower_components/roboto-fontface',
                     './client/bower_components/br-masks/releases/br-masks.js',
-                    './client/bower_components/angular-br-filters/src/filters.js'
+                    './client/bower_components/angular-br-filters/src/' +
+                    'filters.js'
                 ]
             },
             prod: {
@@ -84,7 +85,8 @@ module.exports = function (grunt) {
                     './client/bower_components/roboto-fontface',
                     './client/bower_components/sinon/index.js',
                     './client/bower_components/br-masks/releases/br-masks.js',
-                    './client/bower_components/angular-br-filters/src/filters.js'
+                    './client/bower_components/angular-br-filters/src/' +
+                    'filters.js'
                 ]
             }
         },
@@ -100,7 +102,8 @@ module.exports = function (grunt) {
                     cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
-                    '<%= config.buildPath %>/css/main.css': '<%= config.app %>/assets/scss/appDev.scss'
+                    '<%= config.buildPath %>/css/main.css':
+                        '<%= config.app %>/assets/scss/appDev.scss'
                 }
             },
             prod: {
@@ -110,7 +113,8 @@ module.exports = function (grunt) {
                     cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
-                    '<%= config.app %>/css/main.css': '<%= config.app %>/assets/scss/appProd.scss'
+                    '<%= config.app %>/css/main.css':
+                        '<%= config.app %>/assets/scss/appProd.scss'
                 }
             }
         },
@@ -255,7 +259,8 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: '<%= config.app %>/bower_components/roboto-fontface/',
+                        cwd: '<%= config.app %>/bower_components/' +
+                        'roboto-fontface/',
                         src: ['fonts/**'],
                         dest: '<%= config.productionPath %>/assets/'
                     }
@@ -308,7 +313,8 @@ module.exports = function (grunt) {
             },
             prod: {
                 files: {
-                    '<%= config.distPath %>/js/app.js': '<%= config.distPath %>/js/app.js'
+                    '<%= config.distPath %>/js/app.js':
+                        '<%= config.distPath %>/js/app.js'
                 }
             }
         },
@@ -424,7 +430,10 @@ module.exports = function (grunt) {
                         }
 
                         // Setup the proxy
-                        var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+                        var middlewares = [
+                            require('grunt-connect-proxy/lib/utils')
+                                .proxyRequest
+                        ];
 
                         // Serve static files.
                         options.base.forEach(function (base) {
@@ -463,7 +472,8 @@ module.exports = function (grunt) {
             options: {
                 livereload: true,
                 dateFormat: function (time) {
-                    grunt.log.writeln('File changed changed in ' + time + ' ms at ' + (new Date()).toString());
+                    grunt.log.writeln('File changed changed in ' + time +
+                        ' ms at ' + (new Date()).toString());
                     grunt.log.writeln('Waiting for more changes...');
                 }
             },

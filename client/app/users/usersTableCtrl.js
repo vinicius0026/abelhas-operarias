@@ -2,7 +2,8 @@
     /* global angular */
     'use strict';
 
-    var UsersTableCtrl = function ($compile, $scope, DTOptionsBuilder, DTColumnBuilder, USERS_URLS, DT_LANGUAGE) {
+    var UsersTableCtrl = function ($compile, $scope, DTOptionsBuilder,
+                                   DTColumnBuilder, USERS_URLS, DT_LANGUAGE) {
         var vm = this;
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
@@ -11,7 +12,8 @@
                 url: USERS_URLS.fetch,
                 type: 'POST',
                 error: function () {
-                    // doing nothing with the error... just avoiding the annoying popup
+                    // doing nothing with the error...
+                    // just avoiding the annoying popup
                 }
             })
             .withDataProp('data')
@@ -24,7 +26,6 @@
             })
             .withOption('headerCallback', function (header) {
                 if (!vm.headerCompiled) {
-                    // Use this headerCompiled field to only compile header once
                     vm.headerCompiled = true;
                     $compile(angular.element(header).contents())($scope);
                 }
@@ -34,7 +35,6 @@
             .withOption('autoWidth', true);
 
         /**
-         * Creating columns for the table, setting first and last as static content
          * @see https://l-lin.github.io/angular-datatables/#/rowSelect
          * @type {Array} Array of columns of DataTable
          */
@@ -48,18 +48,23 @@
                     }
                     return '';
                 }),
-            DTColumnBuilder.newColumn(null).withTitle('Ações').notSortable().withOption('searchable', false)
+            DTColumnBuilder.newColumn(null).withTitle('Ações')
+                .notSortable().withOption('searchable', false)
                 .renderWith(function (data /*, type, full, meta*/) {
 
-                    return '<a ng-click="vm.editUser(\'' + data._id + '\')" class="btn btn-xs btn-default">' +
+                    return '<a ng-click="vm.editUser(\'' + data._id + '\')" ' +
+                            'class="btn btn-xs btn-default">' +
                         '<i class="fa fa-search"></i> Detalhes</a>' +
-                        '<a href="#" ng-click="vm.removeUser(\'' + data._id + '\')" class="btn btn-xs btn-lightred">' +
+                        '<a href="#" ng-click="' +
+                            'vm.removeUser(\'' + data._id + '\')" ' +
+                            'class="btn btn-xs btn-lightred">' +
                         '<i class="fa fa-times"></i> Remover</a>';
                 })
         ];
     };
 
-    UsersTableCtrl.$inject = ['$compile', '$scope', 'DTOptionsBuilder', 'DTColumnBuilder', 'USERS_URLS', 'DT_LANGUAGE'];
+    UsersTableCtrl.$inject = ['$compile', '$scope', 'DTOptionsBuilder',
+        'DTColumnBuilder', 'USERS_URLS', 'DT_LANGUAGE'];
 
     angular.module('abelhas-operarias')
         .controller('UsersTableCtrl', UsersTableCtrl);

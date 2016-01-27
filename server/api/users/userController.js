@@ -28,7 +28,8 @@ var datatablesQuery = require('datatables-query'),
             var params = req.body,
                 query = datatablesQuery(User);
 
-            query.run(params).then(data => res.send(data), err => errorHandler(err, res));
+            query.run(params).then(data => res.send(data),
+                    err => errorHandler(err, res));
         },
 
         read: function (req, res) {

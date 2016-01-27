@@ -19,11 +19,13 @@ module.exports = {
                 }
 
                 if (!user) {
-                    return done(null, false, {message: 'Incorrect Username or Password'});
+                    return done(null, false,
+                        {message: 'Incorrect Username or Password'});
                 }
 
                 if (!user.authenticate(password)) {
-                    return done(null, false, {message: 'Incorrect Username or Password'});
+                    return done(null, false,
+                        {message: 'Incorrect Username or Password'});
                 }
 
                 return done(null, user);
