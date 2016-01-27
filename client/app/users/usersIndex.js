@@ -9,10 +9,10 @@
                 templateUrl: 'app/users/usersTpl.html',
                 controller: 'UsersCtrl as vm'
             })
-            .state('app.createUser', {
-                url: '/usuarios/criar',
-                templateUrl: 'app/users/create/createUserTpl.html',
-                controller: 'CreateUserCtrl as vm'
+            .state('app.user', {
+                url: '/usuarios/:action/:id',
+                templateUrl: 'app/users/userTpl.html',
+                controller: 'UserCtrl as vm'
             });
     };
 
