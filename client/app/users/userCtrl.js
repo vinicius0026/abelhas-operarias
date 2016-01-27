@@ -21,11 +21,11 @@
             },
 
             fetchUser = function (userId) {
-                if ($stateParams.action === 'editar') {
+                if ($stateParams.action === 'editar' || 'visualizar') {
                     usersService.get(userId)
                         .then(function (res) {
                             console.log('res', res);
-                            // vm.user = res.data.data;
+                             vm.user = res.data.data;
                         }, function () {
                             toastr.error('Erro ao ler dados do usuário');
                         });
@@ -35,8 +35,19 @@
 
             },
 
-            updateUser = function (/* userData, userId*/) {
-
+            updateUser = function (userId, userData) {
+                if (vm.form.$valid) {
+                    usersService.update(userId, userData)
+                        .then(function () {
+                            toastr.success('Usuário atualizado com sucesso');
+                            $state.go('app.user', {action: 'visualizar',
+                                id: vm.user.id}, {reload: true});
+                        }, function () {
+                            toastr.error('Erro ao atualizar usuário');
+                        });
+                } else {
+                    toastr.error('Preencha todos os campos obrigatórios');
+                }
             },
 
             saveUser = function (userData) {
@@ -46,12 +57,19 @@
                     updateUser(userData, $stateParams.id);
                 }
 
+            },
+
+            editUser = function () {
+                $state.go('app.user', {action: 'editar', id: vm.user.id},
+                    {reload: true});
             };
 
         fetchUser($stateParams.id);
 
         vm.createUser = createUser;
         vm.saveUser = saveUser;
+        vm.action = $stateParams.action;
+        vm.editUser = editUser;
     };
 
     UserCtrl.$inject = ['$state', '$stateParams', 'usersService', 'toastr'];
