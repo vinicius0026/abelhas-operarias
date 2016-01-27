@@ -131,9 +131,9 @@ describe('User API Tests', () => {
                     })
                     .end(cb),
                 cb => User.create(user, (err, user) => {
-                        userId = user._id;
-                        cb(err);
-                    })
+                    userId = user._id;
+                    cb(err);
+                })
             ], err => done(err));
 
         });

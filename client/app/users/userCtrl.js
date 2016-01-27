@@ -25,7 +25,7 @@
                     usersService.get(userId)
                         .then(function (res) {
                             console.log('res', res);
-                            //vm.user = res.data.data;
+                            // vm.user = res.data.data;
                         }, function () {
                             toastr.error('Erro ao ler dados do usuário');
                         });
@@ -35,7 +35,7 @@
 
             },
 
-            updateUser = function (userData, userId) {
+            updateUser = function (/* userData, userId*/) {
 
             },
 
@@ -46,7 +46,7 @@
                     updateUser(userData, $stateParams.id);
                 }
 
-            }
+            };
 
         fetchUser($stateParams.id);
 

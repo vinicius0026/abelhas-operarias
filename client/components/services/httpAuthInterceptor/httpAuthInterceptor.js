@@ -1,4 +1,5 @@
 (function () {
+    /* globals angular, $ */
     'use strict';
 
     var httpAuthInterceptor = function ($rootScope, AUTH_EVENTS) {
