@@ -3,10 +3,10 @@
 
     var httpAuthInterceptor = function ($rootScope, AUTH_EVENTS) {
         var responseError = function (res) {
-            console.log('res', res);
             if (res && res.status === 401) {
                 $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
             }
+            return res;
         };
 
         $(document).ajaxError(function (event, res) {
