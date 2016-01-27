@@ -12,7 +12,7 @@
                 base: base,
                 fetch: base.concat('/fetch'),
                 one: function (id) {
-                    base.concat('/:id').replace(':id', id);
+                    return base.concat('/:id').replace(':id', id);
                 }
             };
         })();
