@@ -56,7 +56,12 @@
                             'class="btn btn-xs btn-default">' +
                         '<i class="fa fa-search"></i> Detalhes</a>' +
                         '<a ng-click="vm.removeUser(\'' + data._id + '\')" ' +
-                            'class="btn btn-xs btn-lightred">' +
+                            'class="btn btn-xs btn-lightred" confirm="Tem ' +
+                        'certeza que pretende remover este usuário? ' +
+                        'Esta ação não pode ser desfeita."' +
+                        'confirm-settings="{defaultLabels: ' +
+                        '{title: \'Confirmação\', ok: \'Ok\', ' +
+                        'cancel: \'Cancelar\'}}">' +
                         '<i class="fa fa-times"></i> Remover</a>';
                 })
         ];
