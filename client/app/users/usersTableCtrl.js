@@ -55,8 +55,7 @@
                     return '<a ng-click="vm.viewUser(\'' + data._id + '\')" ' +
                             'class="btn btn-xs btn-default">' +
                         '<i class="fa fa-search"></i> Detalhes</a>' +
-                        '<a href="#" ng-click="' +
-                            'vm.removeUser(\'' + data._id + '\')" ' +
+                        '<a ng-click="vm.removeUser(\'' + data._id + '\')" ' +
                             'class="btn btn-xs btn-lightred">' +
                         '<i class="fa fa-times"></i> Remover</a>';
                 })

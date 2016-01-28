@@ -24,12 +24,20 @@
                     url: USERS_URLS.one(userId),
                     data: data
                 });
+            },
+
+            remove = function (userId) {
+                return ApiRequests.req({
+                    method: 'DELETE',
+                    url: USERS_URLS.one(userId)
+                })
             };
 
         return {
             create: create,
             get: get,
-            update: update
+            update: update,
+            remove: remove
         };
     };
 

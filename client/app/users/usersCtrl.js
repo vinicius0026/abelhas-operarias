@@ -2,22 +2,29 @@
     /* global angular */
     'use strict';
 
-    var UsersCtrl = function ($state) {
+    var UsersCtrl = function ($state, toastr, usersService) {
         var vm = this,
-
-            editUser = function (userId) {
-                $state.go('app.user', {action: 'editar', id: userId});
-            },
 
             viewUser = function (userId) {
                 $state.go('app.user', {action: 'visualizar', id: userId});
+            },
+
+            removeUser = function (userId) {
+                console.log('removing userId:', userId);
+                usersService.remove(userId)
+                    .then(function () {
+                        toastr.success('Usuário removido com sucesso.');
+                        $state.go('app.users', {}, {reload: true});
+                    }, function () {
+                        toastr.error('Erro ao remover usuário');
+                    });
             };
 
-        vm.editUser = editUser;
         vm.viewUser = viewUser;
+        vm.removeUser = removeUser;
     };
 
-    UsersCtrl.$inject = ['$state'];
+    UsersCtrl.$inject = ['$state', 'toastr', 'usersService'];
 
 
     angular.module('abelhas-operarias')
