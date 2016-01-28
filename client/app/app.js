@@ -72,6 +72,7 @@
         'datatables.scroller',
         'datatables.tabletools',
         'ui.bootstrap',
+        'angular-confirm',
         // App
         'constants-auth-events',
         'factory-api-requests',
