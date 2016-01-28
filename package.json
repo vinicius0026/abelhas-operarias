@@ -38,6 +38,7 @@
     "express-jwt": "^3.3.0",
     "json-mask": "^0.3.5",
     "jsonwebtoken": "^5.5.4",
+    "lodash": "^4.0.1",
     "moment": "^2.11.1",
     "mongoose": "^4.3.5",
     "passport": "^0.3.2",
