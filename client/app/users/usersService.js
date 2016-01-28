@@ -12,16 +12,24 @@
             },
 
             get = function (userId) {
-                console.log('USERS_URLS.one(userId)', USERS_URLS.one(userId));
                 return ApiRequests.req({
                     method: 'GET',
                     url: USERS_URLS.one(userId)
+                });
+            },
+
+            update = function (userId, data) {
+                return ApiRequests.req({
+                    method: 'PUT',
+                    url: USERS_URLS.one(userId),
+                    data: data
                 });
             };
 
         return {
             create: create,
-            get: get
+            get: get,
+            update: update
         };
     };
 

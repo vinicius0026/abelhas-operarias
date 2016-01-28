@@ -24,7 +24,6 @@
                 if ($stateParams.action === 'editar' || 'visualizar') {
                     usersService.get(userId)
                         .then(function (res) {
-                            console.log('res', res);
                              vm.user = res.data.data;
                         }, function () {
                             toastr.error('Erro ao ler dados do usuário');
@@ -35,7 +34,7 @@
 
             },
 
-            updateUser = function (userId, userData) {
+            updateUser = function (userData, userId) {
                 if (vm.form.$valid) {
                     usersService.update(userId, userData)
                         .then(function () {
@@ -62,6 +61,10 @@
             editUser = function () {
                 $state.go('app.user', {action: 'editar', id: vm.user.id},
                     {reload: true});
+            },
+
+            capitalizeFirstLetter = function (str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
             };
 
         fetchUser($stateParams.id);
@@ -70,6 +73,7 @@
         vm.saveUser = saveUser;
         vm.action = $stateParams.action;
         vm.editUser = editUser;
+        vm.capitalizeFirstLetter = capitalizeFirstLetter;
     };
 
     UserCtrl.$inject = ['$state', '$stateParams', 'usersService', 'toastr'];

@@ -15,7 +15,7 @@
 
                         <!-- tile header -->
                         <div class="tile-header dvd dvd-btm">
-                            <h1 class="custom-font">Criar <strong>Usuário</strong></h1>
+                            <h1 class="custom-font">{{vm.capitalizeFirstLetter(vm.action)}} <strong>Usuário</strong></h1>
                         </div>
                         <!-- /tile header -->
 
@@ -55,11 +55,11 @@
 
                                 <div class="form-group" ng-show="vm.action !== 'visualizar'">
                                     <label for="password" class="col-sm-2 control-label">Senha: <span
-                                        class="text-lightred text-md">*</span></label>
+                                        class="text-lightred text-md" ng-show="vm.action === 'criar'">*</span></label>
 
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="password"
-                                               placeholder="Senha" ng-model="vm.user.password" required>
+                                               placeholder="Senha" ng-model="vm.user.password" ng-required="{{vm.action === 'criar'}}">
                                     </div>
                                 </div>
 
@@ -72,7 +72,7 @@
                                          uib-tooltip="Voltar"><i class="fa fa-arrow-left"></i></a>
                                       <a href="" ng-click="vm.editUser()" class="btn btn-ef btn-ef-1 btn-ef-1-orange btn-ef-1a btn-rounded-20 mr-5"
                                          uib-tooltip="Editar"><i class="fa fa-pencil"></i></a>
-                                      <a href="" ng-click="vm.createUser(vm.user)" class="btn btn-ef btn-ef-1 btn-ef-1-success btn-ef-1a btn-rounded-20 mr-5"
+                                      <a href="" ng-click="vm.saveUser(vm.user)" class="btn btn-ef btn-ef-1 btn-ef-1-success btn-ef-1a btn-rounded-20 mr-5"
                                          uib-tooltip="Salvar"><i class="fa fa-check"></i></a>
                                 </span>
                             </div>
