@@ -30,7 +30,7 @@
                 return ApiRequests.req({
                     method: 'DELETE',
                     url: USERS_URLS.one(userId)
-                })
+                });
             };
 
         return {

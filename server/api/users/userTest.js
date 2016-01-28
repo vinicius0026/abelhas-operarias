@@ -165,15 +165,15 @@ describe('User API Tests', () => {
 
         before(done => {
             async.series([
-                    cb => User.create(admin, cb),
-                    cb => request(app)
+                cb => User.create(admin, cb),
+                cb => request(app)
                     .post('/auth/local')
                     .send({username: admin.username, password: admin.password})
                     .expect(res => {
                         adminAuth = `Bearer ${res.body.data.token}`;
                     })
                     .end(cb),
-                    cb => User.create(user, (err, user) => {
+                cb => User.create(user, (err, user) => {
                     userId = user._id;
                     cb(err);
                 })
@@ -236,15 +236,15 @@ describe('User API Tests', () => {
 
         before(done => {
             async.series([
-                    cb => User.create(admin, cb),
-                    cb => request(app)
+                cb => User.create(admin, cb),
+                cb => request(app)
                     .post('/auth/local')
                     .send({username: admin.username, password: admin.password})
                     .expect(res => {
                         adminAuth = `Bearer ${res.body.data.token}`;
                     })
                     .end(cb),
-                    cb => User.create(user, (err, user) => {
+                cb => User.create(user, (err, user) => {
                     userId = user._id;
                     cb(err);
                 })

@@ -24,7 +24,7 @@
                 if ($stateParams.action === 'editar' || 'visualizar') {
                     usersService.get(userId)
                         .then(function (res) {
-                             vm.user = res.data.data;
+                            vm.user = res.data.data;
                         }, function () {
                             toastr.error('Erro ao ler dados do usuário');
                         });
