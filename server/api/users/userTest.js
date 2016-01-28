@@ -155,6 +155,77 @@ describe('User API Tests', () => {
         });
     });
 
+    describe('Update User Tests', () => {
+        var user = {
+                name: 'user',
+                username: 'user',
+                password: 'pass'
+            },
+            userId;
+
+        before(done => {
+            async.series([
+                    cb => User.create(admin, cb),
+                    cb => request(app)
+                    .post('/auth/local')
+                    .send({username: admin.username, password: admin.password})
+                    .expect(res => {
+                        adminAuth = `Bearer ${res.body.data.token}`;
+                    })
+                    .end(cb),
+                    cb => User.create(user, (err, user) => {
+                    userId = user._id;
+                    cb(err);
+                })
+            ], err => done(err));
+
+        });
+
+        after(done => User.remove({}, done));
+
+        it('should be able to update user if logged in', done => {
+            request(app)
+                .put(`/api/users/${userId}`)
+                .set('authorization', adminAuth)
+                .send({
+                    email: 'user@fiddus.com.br'
+                })
+                .expect(200)
+                .expect(res => {
+                    var _user = res.body.data;
+
+                    expect(_user.name).to.equal(user.name);
+                    expect(_user.email).to.equal('user@fiddus.com.br');
+                    expect(_user.username).to.equal(user.username);
+                })
+                .end(done);
+        });
+
+        it('should be able to change password', done => {
+            request(app)
+                .put(`/api/users/${userId}`)
+                .set('authorization', adminAuth)
+                .send({
+                    password: 'newpass'
+                })
+                .expect(200)
+                .end(err => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    request(app)
+                        .post('/auth/local')
+                        .send({
+                            username: user.username,
+                            password: 'newpass'
+                        })
+                        .expect(200)
+                        .end(done);
+                });
+        });
+    });
+
     describe('Fetch Users Test', () => {
         var users = [1, 2, 3, 4].map(n => {
             return {

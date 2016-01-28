@@ -35,7 +35,7 @@ var datatablesQuery = require('datatables-query'),
         read: function (req, res) {
             var user = req.fiddus.user;
 
-            user.read((err, data) => {
+            user.read((err, user) => {
                 if (err) {
                     return errorHandler(err, res);
                 }
@@ -43,10 +43,27 @@ var datatablesQuery = require('datatables-query'),
                 res.send({
                     ok: true,
                     info: `Got user ${user.id}`,
-                    data: data
+                    data: user
                 });
             });
 
+        },
+
+        update: function (req, res) {
+            var user = req.fiddus.user,
+                updateData = req.body;
+
+            user.update(updateData, (err, user) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.send({
+                    ok: true,
+                    info: `Updated user ${user.id}`,
+                    data: user
+                });
+            });
         },
 
         insertUserInRequest: function (req, res, next) {

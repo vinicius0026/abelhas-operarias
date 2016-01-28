@@ -8,10 +8,12 @@ var crypto = require('crypto'),
     mask = require('json-mask'),
     moment = require('moment'),
     mongoose = require('mongoose'),
+    _ = require('lodash'),
 
     Schema = mongoose.Schema,
     userCreateMask = 'name,email,username,password',
     userMask = 'id,name,email,username',
+    userUpdateMask = 'name,email,password',
     User,
 
     UserSchema = new Schema({
@@ -91,6 +93,11 @@ UserSchema.methods = {
 
     read: function (callback) {
         callback(null, mask(this, userMask));
+    },
+
+    update: function (userData, callback) {
+        _.merge(this, mask(userData, userUpdateMask));
+        this.save((err, user) => callback(err, mask(user, userMask)));
     }
 };
 

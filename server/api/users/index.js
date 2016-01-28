@@ -17,4 +17,7 @@ router.post('/fetch', userAuth.isAuthenticated(), controller.fetch);
 router.get('/:id', userAuth.isAuthenticated(), controller.insertUserInRequest,
     controller.read);
 
+router.put('/:id', userAuth.isAuthenticated(), controller.insertUserInRequest,
+    controller.update);
+
 module.exports = router;
