@@ -226,6 +226,52 @@ describe('User API Tests', () => {
         });
     });
 
+    describe('Delete User Tests', () => {
+        var user = {
+                name: 'user',
+                username: 'user',
+                password: 'pass'
+            },
+            userId;
+
+        before(done => {
+            async.series([
+                    cb => User.create(admin, cb),
+                    cb => request(app)
+                    .post('/auth/local')
+                    .send({username: admin.username, password: admin.password})
+                    .expect(res => {
+                        adminAuth = `Bearer ${res.body.data.token}`;
+                    })
+                    .end(cb),
+                    cb => User.create(user, (err, user) => {
+                    userId = user._id;
+                    cb(err);
+                })
+            ], err => done(err));
+
+        });
+
+        after(done => User.remove({}, done));
+
+        it('should be possible to remove user if authenticated', done => {
+            request(app)
+                .delete(`/api/users/${userId}`)
+                .set('authorization', adminAuth)
+                .expect(204)
+                .end(err => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    User.find({_id: userId}, (err, users) => {
+                        expect(users.length).to.equal(0);
+                        done(err);
+                    });
+                });
+        });
+    });
+
     describe('Fetch Users Test', () => {
         var users = [1, 2, 3, 4].map(n => {
             return {

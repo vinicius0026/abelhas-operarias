@@ -20,4 +20,6 @@ router.get('/:id', userAuth.isAuthenticated(), controller.insertUserInRequest,
 router.put('/:id', userAuth.isAuthenticated(), controller.insertUserInRequest,
     controller.update);
 
+router.delete('/:id', userAuth.isAuthenticated(), controller.delete);
+
 module.exports = router;

@@ -66,6 +66,18 @@ var datatablesQuery = require('datatables-query'),
             });
         },
 
+        delete: function (req, res) {
+            var userId = req.params.id;
+
+            User.remove({_id: userId}, err => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.sendStatus(204);
+            });
+        },
+
         insertUserInRequest: function (req, res, next) {
             var userId = req.params.id;
 
