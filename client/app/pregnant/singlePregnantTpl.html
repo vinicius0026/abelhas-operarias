@@ -99,31 +99,28 @@
 
                                 <div class="form-group">
                                     <label for="numberOfChildren" class="col-sm-2 control-label">Número de Filhos:</label>
-
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <input type="number" class="form-control" id="numberOfChildren"
                                                placeholder="Número de filhos" ng-model="vm.pregnant.numberOfChildren"
                                                ng-disabled="vm.action === 'visualizar'">
                                     </div>
-                                    <label for="ageOfChildren" class="col-sm-2 control-label">Idade dos Filhos:</label>
 
-                                    <div class="col-sm-4">
+                                    <label for="ageOfChildren" class="col-sm-2 control-label">Idade dos Filhos:</label>
+                                    <div class="col-sm-2">
                                         <input type="text" class="form-control" id="ageOfChildren"
                                                placeholder="Idade dos filhos" ng-model="vm.pregnant.ageOfChildren"
                                                ng-disabled="vm.action === 'visualizar'">
                                     </div>
-                                </div>
 
-                                <div class="form-group">
                                     <label for="babyGender" class="col-sm-2 control-label">Sexo do Bebê:</label>
-
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-2">
                                         <select class="form-control" id="babyGender" ng-model="vm.pregnant.babyGender"
                                                 ng-disabled="vm.action === 'visualizar'">
                                             <option value="feminine">Feminino</option>
                                             <option value="masculine">Masculino</option>
                                         </select>
                                     </div>
+
                                 </div>
 
                                 <div class="form-group">
@@ -137,21 +134,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="ownHouse" class="col-sm-2 control-label">Possui Casa Própria:</label>
+                                    <label for="phone" class="col-sm-2 control-label">Telefone:</label>
 
-                                    <div class="col-sm-4">
-                                        <select class="form-control" id="ownHouse" ng-model="vm.pregnant.ownHouse"
-                                                ng-disabled="vm.action === 'visualizar'">
-                                            <option value="true">Sim</option>
-                                            <option value="false">Não</option>
-                                        </select>
-                                    </div>
-                                    <label for="rentValue" class="col-sm-2 control-label">Valor do Aluguel:</label>
-
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="rentValue"
-                                               placeholder="Valor do aluguel" ng-model="vm.pregnant.rentValue"
-                                               ng-disabled="vm.action === 'visualizar'" ui-money-mask>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="phone"
+                                               placeholder="Telefone" ng-model="vm.pregnant.phone"
+                                               ng-disabled="vm.action === 'visualizar'" ui-br-phone-number>
                                     </div>
                                 </div>
 
@@ -183,16 +171,57 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone" class="col-sm-2 control-label">Telefone:</label>
+                                    <label for="ownHouse" class="col-sm-2 control-label">Possui Casa Própria:</label>
 
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="phone"
-                                               placeholder="Telefone" ng-model="vm.pregnant.phone"
-                                               ng-disabled="vm.action === 'visualizar'" ui-br-phone-number>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="ownHouse" ng-model="vm.pregnant.ownHouse"
+                                                ng-disabled="vm.action === 'visualizar'">
+                                            <option value="true">Sim</option>
+                                            <option value="false">Não</option>
+                                        </select>
+                                    </div>
+                                    <label for="rentValue" class="col-sm-2 control-label">Valor do Aluguel:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="rentValue"
+                                               placeholder="Valor do aluguel" ng-model="vm.pregnant.rentValue"
+                                               ng-disabled="vm.action === 'visualizar'" ui-money-mask>
                                     </div>
                                 </div>
 
-                                <p>{{vm.pregnant}}</p>
+                                <div class="form-group">
+                                    <label for="religion" class="col-sm-2 control-label">Religião:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="religion"
+                                               placeholder="Religião" ng-model="vm.pregnant.religion"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                    <label for="education" class="col-sm-2 control-label">Grau de Instrução:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="education"
+                                               placeholder="Grau de instrução" ng-model="vm.pregnant.education"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dateForDonation" class="col-sm-2 control-label">Data para Receber o Enxoval:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="date" class="form-control" id="dateForDonation"
+                                               placeholder="Telefone" ng-model="vm.pregnant.dateForDonation"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+
+                                    <label for="referral" class="col-sm-2 control-label">Encaminhado por:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="referral"
+                                               placeholder="Instiuição que encaminhou a gestante" ng-model="vm.pregnant.referral"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
 
                             </form>
 
