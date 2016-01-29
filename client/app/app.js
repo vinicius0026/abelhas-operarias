@@ -73,6 +73,7 @@
         'datatables.tabletools',
         'ui.bootstrap',
         'angular-confirm',
+        'ui.utils.masks',
         // App
         'constants-auth-events',
         'factory-api-requests',
