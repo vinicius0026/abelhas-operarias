@@ -6,18 +6,30 @@
     var API_BASE_URL = '/api',
         AUTH_URL = '/auth/local',
 
-        usersUrls = (function () {
-            var base = API_BASE_URL.concat('/users');
+        crudUrls = function (baseUrl) {
             return {
-                base: base,
-                fetch: base.concat('/fetch'),
+                base: baseUrl,
+                fetch: baseUrl.concat('/fetch'),
                 one: function (id) {
-                    return base.concat('/:id').replace(':id', id);
+                    return baseUrl.concat('/:id').replace(':id', id);
                 }
             };
+        },
+
+        usersUrls = (function () {
+            var base = API_BASE_URL.concat('/users');
+
+            return crudUrls(base);
+        })(),
+
+        pregnantUrls = (function () {
+            var base = API_BASE_URL.concat('/pregnant');
+
+            return crudUrls(base);
         })();
 
     angular.module('abelhas-operarias')
         .constant('AUTH_URL', AUTH_URL)
-        .constant('USERS_URLS', usersUrls);
+        .constant('USERS_URLS', usersUrls)
+        .constant('PREGNANT_URLS', pregnantUrls);
 })();
