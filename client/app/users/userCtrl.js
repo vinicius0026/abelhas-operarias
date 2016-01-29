@@ -6,18 +6,14 @@
         var vm = this,
 
             createUser = function (user) {
-                if (vm.form.$valid) {
-                    usersService.create(user)
-                        .then(function () {
-                            toastr.success('Usuário criado com sucesso');
-                            $state.go('app.users.list');
-                        },
-                        function () {
-                            toastr.error('Erro ao criar usuário');
-                        });
-                } else {
-                    toastr.error('Preencha todos os campos obrigatórios');
-                }
+                usersService.create(user)
+                    .then(function () {
+                        toastr.success('Usuário criado com sucesso');
+                        $state.go('app.users.list');
+                    },
+                    function () {
+                        toastr.error('Erro ao criar usuário');
+                    });
             },
 
             fetchUser = function (userId) {
@@ -35,27 +31,26 @@
             },
 
             updateUser = function (userData, userId) {
-                if (vm.form.$valid) {
-                    usersService.update(userId, userData)
-                        .then(function () {
-                            toastr.success('Usuário atualizado com sucesso');
-                            $state.go('app.users.user', {action: 'visualizar',
-                                id: vm.user.id}, {reload: true});
-                        }, function () {
-                            toastr.error('Erro ao atualizar usuário');
-                        });
-                } else {
-                    toastr.error('Preencha todos os campos obrigatórios');
-                }
+                usersService.update(userId, userData)
+                    .then(function () {
+                        toastr.success('Usuário atualizado com sucesso');
+                        $state.go('app.users.user', {action: 'visualizar',
+                            id: vm.user.id}, {reload: true});
+                    }, function () {
+                        toastr.error('Erro ao atualizar usuário');
+                    });
             },
 
             saveUser = function (userData) {
-                if ($stateParams.action === 'criar') {
-                    createUser(userData);
-                } else if ($stateParams.action === 'editar') {
-                    updateUser(userData, $stateParams.id);
+                if (vm.form.$valid) {
+                    if ($stateParams.action === 'criar') {
+                        createUser(userData);
+                    } else if ($stateParams.action === 'editar') {
+                        updateUser(userData, $stateParams.id);
+                    }
+                } else {
+                    toastr.error('Preencha todos os campos obrigatórios');
                 }
-
             },
 
             editUser = function () {
