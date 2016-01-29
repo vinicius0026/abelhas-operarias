@@ -9,7 +9,11 @@
 
                 $http(configsObj)
                     .then(function (data) {
-                        defer.resolve(data);
+                        if (data.status >= 200 && data.status < 400) {
+                            defer.resolve(data);
+                        } else {
+                            defer.reject(data);
+                        }
                     }, function (error) {
                         defer.reject(error);
                     })
