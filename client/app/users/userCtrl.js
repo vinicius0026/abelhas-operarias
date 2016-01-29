@@ -10,7 +10,7 @@
                     usersService.create(user)
                         .then(function () {
                             toastr.success('Usuário criado com sucesso');
-                            $state.go('app.users');
+                            $state.go('app.users.list');
                         },
                         function () {
                             toastr.error('Erro ao criar usuário');
@@ -39,7 +39,7 @@
                     usersService.update(userId, userData)
                         .then(function () {
                             toastr.success('Usuário atualizado com sucesso');
-                            $state.go('app.user', {action: 'visualizar',
+                            $state.go('app.users.user', {action: 'visualizar',
                                 id: vm.user.id}, {reload: true});
                         }, function () {
                             toastr.error('Erro ao atualizar usuário');
@@ -59,7 +59,7 @@
             },
 
             editUser = function () {
-                $state.go('app.user', {action: 'editar', id: vm.user.id},
+                $state.go('app.users.user', {action: 'editar', id: vm.user.id},
                     {reload: true});
             },
 
