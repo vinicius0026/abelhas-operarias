@@ -6,7 +6,7 @@
     var SinglePregnantCtrl = function ($state, $stateParams, toastr) {
         var vm = this,
 
-            validActions = ['criar', 'visualizar', 'editar'],
+            validActions = ['cadastrar', 'visualizar', 'editar'],
 
             validateAction = function (action) {
                 if (validActions.indexOf(action) < 0) {
