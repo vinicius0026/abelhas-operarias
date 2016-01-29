@@ -1,0 +1,231 @@
+<div class="page page-pregnant">
+
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <div class="add-nav">
+
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-md-12">
+
+                    <!-- tile -->
+                    <section class="tile">
+
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font">{{vm.capitalizeFirstLetter(vm.action)}} <strong>Gestante</strong></h1>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body">
+
+                            <form class="form-horizontal" role="form" name="vm.form">
+
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Nome: <span
+                                        class="text-lightred text-md">*</span></label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name"
+                                               placeholder="Nome completo da gestante" ng-model="vm.pregnant.name" required
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cpf" class="col-sm-2 control-label">CPF: <span
+                                        class="text-lightred text-md">*</span></label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="cpf"
+                                               placeholder="CPF da gestante" ng-model="vm.pregnant.cpf" required
+                                               ng-disabled="vm.action === 'visualizar'" ui-br-cpf-mask>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="age" class="col-sm-2 control-label">Idade: <span
+                                        class="text-lightred text-md">*</span></label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="age"
+                                               placeholder="Idade da gestante" ng-model="vm.pregnant.age" required
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="occupation" class="col-sm-2 control-label">Profissão:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="occupation"
+                                               placeholder="Profissão da gestante" ng-model="vm.pregnant.occupation"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="spouse.name" class="col-sm-2 control-label">Nome do Esposo:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="spouse.name"
+                                               placeholder="Nome completo do esposo" ng-model="vm.pregnant.spouse.name"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="spouse.age" class="col-sm-2 control-label">Idade do Esposo:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="spouse.age"
+                                               placeholder="Idade do esposo" ng-model="vm.pregnant.spouse.age"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="spouse.occupation" class="col-sm-2 control-label">Profissão do Esposo:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="spouse.occupation"
+                                               placeholder="Profissão do esposo" ng-model="vm.pregnant.spouse.occupation"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="numberOfChildren" class="col-sm-2 control-label">Número de Filhos:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="number" class="form-control" id="numberOfChildren"
+                                               placeholder="Número de filhos" ng-model="vm.pregnant.numberOfChildren"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                    <label for="ageOfChildren" class="col-sm-2 control-label">Idade dos Filhos:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="ageOfChildren"
+                                               placeholder="Idade dos filhos" ng-model="vm.pregnant.ageOfChildren"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="babyGender" class="col-sm-2 control-label">Sexo do Bebê:</label>
+
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="babyGender" ng-model="vm.pregnant.babyGender"
+                                                ng-disabled="vm.action === 'visualizar'">
+                                            <option value="feminine">Feminino</option>
+                                            <option value="masculine">Masculino</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="familyIncome" class="col-sm-2 control-label">Renda Familiar:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="familyIncome"
+                                               placeholder="Renda familiar" ng-model="vm.pregnant.familyIncome"
+                                               ng-disabled="vm.action === 'visualizar'" ui-money-mask>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ownHouse" class="col-sm-2 control-label">Possui Casa Própria:</label>
+
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="ownHouse" ng-model="vm.pregnant.ownHouse"
+                                                ng-disabled="vm.action === 'visualizar'">
+                                            <option value="true">Sim</option>
+                                            <option value="false">Não</option>
+                                        </select>
+                                    </div>
+                                    <label for="rentValue" class="col-sm-2 control-label">Valor do Aluguel:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="rentValue"
+                                               placeholder="Valor do aluguel" ng-model="vm.pregnant.rentValue"
+                                               ng-disabled="vm.action === 'visualizar'" ui-money-mask>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address" class="col-sm-2 control-label">Endereço:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="address"
+                                               placeholder="Rua e número" ng-model="vm.pregnant.address"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="neighborhood" class="col-sm-2 control-label">Bairro:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="neighborhood"
+                                               placeholder="Bairro" ng-model="vm.pregnant.neighborhood"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                    <label for="reference" class="col-sm-2 control-label">Referência:</label>
+
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="reference"
+                                               placeholder="Referência" ng-model="vm.pregnant.reference"
+                                               ng-disabled="vm.action === 'visualizar'">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone" class="col-sm-2 control-label">Telefone:</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="phone"
+                                               placeholder="Telefone" ng-model="vm.pregnant.phone"
+                                               ng-disabled="vm.action === 'visualizar'" ui-br-phone-number>
+                                    </div>
+                                </div>
+
+                                <p>{{vm.pregnant}}</p>
+
+                            </form>
+
+
+                            <div class="row">
+                                <span class="controls pull-right">
+                                      <a ui-sref="app.pregnant.list" class="btn btn-ef btn-ef-1 btn-ef-1-default btn-ef-1a btn-rounded-20 mr-5"
+                                         uib-tooltip="Voltar"><i class="fa fa-arrow-left"></i></a>
+                                      <a href="" ng-click="vm.editPregnant()" class="btn btn-ef btn-ef-1 btn-ef-1-orange btn-ef-1a btn-rounded-20 mr-5"
+                                         uib-tooltip="Editar"><i class="fa fa-pencil"></i></a>
+                                      <a href="" ng-click="vm.savePregnant(vm.pregnant)" class="btn btn-ef btn-ef-1 btn-ef-1-success btn-ef-1a btn-rounded-20 mr-5"
+                                         uib-tooltip="Salvar"><i class="fa fa-check"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /tile body -->
+
+                    </section>
+                    <!-- /tile -->
+
+
+                </div>
+                <!-- /col -->
+
+            </div>
+            <!-- /row -->
+
+
+        </div>
+
+
+    </div>
+    <!-- /page content -->
+
+
+</div>
