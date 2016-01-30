@@ -15,7 +15,7 @@ var mask = require('json-mask'),
         'familyIncome,religion,education,phone,address,neighborhood,' +
         'reference,ownHouse,rentValue,dateForDonation,referral,obs',
 
-    pregnantMask = `id,${pregnantCreateMask}`,
+    pregnantMask = `id,createdAt,${pregnantCreateMask}`,
 
     PregnantSchema = new Schema({
         name: {type: String, require: true, trim: true},
@@ -41,7 +41,8 @@ var mask = require('json-mask'),
         rentValue: {type: Number, min: 0},
         dateForDonation: {type: Date},
         referral: {type: String, trim: true},
-        obs: {type: String, trim: true}
+        obs: {type: String, trim: true},
+        createdAt: {type: Date, default: Date.now()}
     });
 
 PregnantSchema.statics = {

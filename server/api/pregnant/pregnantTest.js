@@ -85,6 +85,8 @@ describe('Pregnant API Tests', () => {
 
                     expect(_pregnant.id).to.exist;
                     delete _pregnant.id;
+                    expect(_pregnant.createdAt).to.exist;
+                    delete _pregnant.createdAt;
                     expect(new Date(_pregnant.dateForDonation).getTime()).to
                         .equal((new Date(pregnant.dateForDonation)).getTime());
                     delete _pregnant.dateForDonation;
