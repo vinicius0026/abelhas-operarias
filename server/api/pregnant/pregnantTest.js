@@ -110,10 +110,52 @@ describe('Pregnant API Tests', () => {
     });
 
     describe('Fetch Pregnant Tests', () => {
+
+        before(done => Pregnant.spawn(pregnant, done));
+
         after(done => Pregnant.remove({}, done));
 
-        it('should be able to fetch ', done => {
-            done();
+        it('should be able to fetch pregnant if authenticated', done => {
+            request(app)
+                .post('/api/pregnant/fetch')
+                .set('authorization', adminAuth)
+                .send({
+                    draw: 1,
+                    start: 0,
+                    length: 10,
+                    columns: [{
+                        data: 'name',
+                        searchable: true,
+                        orderable: true
+                    }, {
+                        data: 'cpf',
+                        searchable: true,
+                        orderable: true
+                    }, {
+                        data: 'age',
+                        searchable: false,
+                        orderable: true
+                    }, {
+                        data: 'createdAt',
+                        searchable: false,
+                        orderable: true
+                    }],
+                    order: [{
+                        column: 0,
+                        dir: 'asc'
+                    }],
+                    search: {
+                        value: ''
+                    }
+                })
+                .expect(200)
+                .expect(res => {
+                    var results = res.body.data;
+
+                    expect(results.length).to.equal(1);
+                    expect(results[0].name).to.equal(pregnant.name);
+                })
+                .end(done);
         });
 
     });

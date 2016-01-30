@@ -4,7 +4,7 @@
 
 'use strict';
 
-var
+var datatablesQuery = require('datatables-query'),
     errorHandler = require('../../lib/util/errorHandler'),
 
     Pregnant = require('./pregnantModel'),
@@ -24,6 +24,18 @@ var
                     data: pregnant
                 });
             });
+        },
+
+        fetch: function (req, res) {
+            var params = req.body,
+                query = datatablesQuery(Pregnant);
+
+            query.run(params).then(data => {
+                res.send(data);
+            }, err => {
+                errorHandler(err, res);
+            });
+
         }
     };
 

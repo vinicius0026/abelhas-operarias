@@ -14,4 +14,6 @@ var router = require('express').Router(),
 
 router.post('/', userAuth.isAuthenticated(), controller.create);
 
+router.post('/fetch', userAuth.isAuthenticated(), controller.fetch);
+
 module.exports = router;
