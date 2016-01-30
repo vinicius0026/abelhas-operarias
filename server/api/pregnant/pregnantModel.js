@@ -13,7 +13,7 @@ var mask = require('json-mask'),
     pregnantCreateMask = 'name,cpf,occupation,age,spouse(name,occupation,age),' +
         'numberOfChildren,ageOfChildren,babyGender,familyIncome,' +
         'familyIncome,religion,education,phone,address,neighborhood,' +
-        'reference,ownHouse,rentValue,dateForDonation,referral',
+        'reference,ownHouse,rentValue,dateForDonation,referral,obs',
 
     pregnantMask = `id,${pregnantCreateMask}`,
 

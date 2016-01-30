@@ -70,7 +70,8 @@ describe('Pregnant API Tests', () => {
                 ownHouse: true,
                 rentValue: 1234,
                 dateForDonation: Date.now(),
-                referral: 'referral'
+                referral: 'referral',
+                obs: 'obs'
             };
 
             request(app)
