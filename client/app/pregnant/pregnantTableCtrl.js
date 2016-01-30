@@ -44,6 +44,10 @@
             DTColumnBuilder.newColumn('cpf').withTitle('CPF'),
             DTColumnBuilder.newColumn('age').withTitle('Idade')
                 .withOption('searchable', false),
+            DTColumnBuilder.newColumn('createdAt').withTitle('Data de Cadastro')
+                .withOption('searchable', false).renderWith(function (data) {
+                    return $filter('date')(data);
+                }),
             DTColumnBuilder.newColumn(null).withTitle('Ações')
                 .notSortable().withOption('searchable', false)
                 .renderWith(function (data /*, type, full, meta*/) {
