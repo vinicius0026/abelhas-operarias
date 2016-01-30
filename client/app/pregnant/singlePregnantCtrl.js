@@ -23,7 +23,7 @@
                 pregnantService.create(data)
                     .then(function () {
                         toastr.success('Gestante cadastrada com sucesso.');
-                        $state.go('app.pregnant');
+                        $state.go('app.pregnant.list');
                     }, function () {
                         toastr.error('Erro ao cadastrar gestante. Favor tentar novamente');
                     });
