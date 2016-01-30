@@ -2,6 +2,8 @@
  * Users API Router
  */
 
+'use strict';
+
 var router = require('express').Router(),
 
     auth = require('../../auth/authService'),
