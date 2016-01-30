@@ -4,7 +4,8 @@
 
 'use strict';
 
-var mask = require('json-mask'),
+var CPF = require('cpf_cnpj').CPF,
+    mask = require('json-mask'),
     mongoose = require('mongoose'),
 
     Pregnant,
@@ -19,7 +20,10 @@ var mask = require('json-mask'),
 
     PregnantSchema = new Schema({
         name: {type: String, require: true, trim: true},
-        cpf: {type: String, index: {unique: true, dropDups: true}, trim: true},
+        cpf: {
+            type: String, index: {unique: true, dropDups: true}, trim: true,
+            validate: CPF.isValid.bind(CPF)
+        },
         age: {type: Number, min: 0},
         occupation: {type: String, trim: true},
         spouse: {

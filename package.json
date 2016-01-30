@@ -31,6 +31,7 @@
     "chai": "^3.4.1",
     "composable-middleware": "^0.3.0",
     "cookie-parser": "^1.4.1",
+    "cpf_cnpj": "0.0.4",
     "datatables-query": "^0.1.0",
     "errorhandler": "^1.4.2",
     "express": "^4.13.3",
