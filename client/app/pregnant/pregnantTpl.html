@@ -11,10 +11,9 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="tile-body">
+                    <div class="tile-body" ng-controller="PregnantTableCtrl as showCase">
                         <div class="table-responsive-wide">
-                            <table class="table table-stripped table-hover table-custom">
-
+                            <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-stripped table-hover table-custom">
                             </table>
                         </div>
                     </div>
