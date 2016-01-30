@@ -1,7 +1,7 @@
 /**
  * Pregnant API tests
  */
-/* globals describe, it, before */
+/* globals describe, it, before, after, afterEach */
 
 'use strict';
 
@@ -21,7 +21,34 @@ describe('Pregnant API Tests', () => {
             name: 'admin',
             password: 'pass'
         },
-        adminAuth;
+        adminAuth,
+
+        pregnant = {
+            name: 'name',
+            cpf: '88543486785',
+            occupation: 'occupation',
+            age: 22,
+            spouse: {
+                name: 'spouse.name',
+                occupation: 'spouse.occupation',
+                age: 22
+            },
+            numberOfChildren: 2,
+            ageOfChildren: '1,2',
+            babyGender: 'feminine',
+            familyIncome: 1234,
+            religion: 'religion',
+            education: 'education',
+            phone: '2222222222',
+            address: 'address',
+            neighborhood: 'neighborhood',
+            reference: 'reference',
+            ownHouse: true,
+            rentValue: 1234,
+            dateForDonation: Date.now(),
+            referral: 'referral',
+            obs: 'obs'
+        };
 
     before(done => {
         async.series([
@@ -46,33 +73,10 @@ describe('Pregnant API Tests', () => {
     });
 
     describe('Create Pregnant Tests', () => {
+
+        afterEach(done => Pregnant.remove({}, done));
+
         it('should be able to create pregnant if authenticated', done => {
-            var pregnant = {
-                name: 'name',
-                cpf: '88543486785',
-                occupation: 'occupation',
-                age: 22,
-                spouse: {
-                    name: 'spouse.name',
-                    occupation: 'spouse.occupation',
-                    age: 22
-                },
-                numberOfChildren: 2,
-                ageOfChildren: '1,2',
-                babyGender: 'feminine',
-                familyIncome: 1234,
-                religion: 'religion',
-                education: 'education',
-                phone: '2222222222',
-                address: 'address',
-                neighborhood: 'neighborhood',
-                reference: 'reference',
-                ownHouse: true,
-                rentValue: 1234,
-                dateForDonation: Date.now(),
-                referral: 'referral',
-                obs: 'obs'
-            };
 
             request(app)
                 .post('/api/pregnant')
@@ -95,5 +99,22 @@ describe('Pregnant API Tests', () => {
                 })
                 .end(done);
         });
+
+        it('shouldnt be able to create pregnant if not authenticated', done => {
+            request(app)
+                .post('/api/pregnant')
+                .send(pregnant)
+                .expect(401)
+                .end(done);
+        });
+    });
+
+    describe('Fetch Pregnant Tests', () => {
+        after(done => Pregnant.remove({}, done));
+
+        it('should be able to fetch ', done => {
+            done();
+        });
+
     });
 });
