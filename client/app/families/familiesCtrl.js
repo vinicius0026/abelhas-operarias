@@ -4,7 +4,6 @@
 
     var FamiliesCtrl = function () {
         var vm = this;
-        vm.test = 'Famílias';
     };
 
     FamiliesCtrl.$inject = [];
