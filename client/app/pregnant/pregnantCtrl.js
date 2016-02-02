@@ -2,14 +2,18 @@
     /* global angular */
     'use strict';
 
-    var PregnantsCtrl = function () {
-        var vm = this;
+    var PregnantsCtrl = function ($state) {
+        var vm = this,
 
-        vm.test = 'Gestantes';
+            viewPregnant = function (pregnantId) {
+                $state.go('app.pregnant.pregnant', {action: 'visualizar',
+                    id: pregnantId}, {reload: true});
+            };
 
+        vm.viewPregnant = viewPregnant;
     };
 
-    PregnantsCtrl.$inject = [];
+    PregnantsCtrl.$inject = ['$state'];
 
     angular.module('abelhas-operarias')
         .controller('PregnantsCtrl', PregnantsCtrl);
