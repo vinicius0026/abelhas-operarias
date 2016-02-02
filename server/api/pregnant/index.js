@@ -20,6 +20,8 @@ router.get('/:id', userAuth.isAuthenticated(),
 router.put('/:id', userAuth.isAuthenticated(),
     controller.insertPregnantInRequest, controller.update);
 
+router.delete('/:id', userAuth.isAuthenticated(), controller.delete);
+
 router.post('/fetch', userAuth.isAuthenticated(), controller.fetch);
 
 module.exports = router;

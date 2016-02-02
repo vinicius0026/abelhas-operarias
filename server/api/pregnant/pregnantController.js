@@ -59,6 +59,18 @@ var datatablesQuery = require('datatables-query'),
             });
         },
 
+        delete: function (req, res) {
+            var pregnantId = req.params.id;
+
+            Pregnant.remove({_id: pregnantId}, err => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.sendStatus(204);
+            });
+        },
+
         fetch: function (req, res) {
             var params = req.body,
                 query = datatablesQuery(Pregnant);

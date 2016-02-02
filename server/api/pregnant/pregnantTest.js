@@ -205,6 +205,34 @@ describe('Pregnant API Tests', () => {
         });
     });
 
+    describe('Delete Pregnant Tests', () => {
+        var pregnantId;
+
+        beforeEach(done => Pregnant.create(pregnant, (err, _pregnant) => {
+            pregnantId = _pregnant._id;
+            done(err);
+        }));
+
+        afterEach(done => Pregnant.remove({}, done));
+
+        it('should be able to delete pregnant if authenticated', done => {
+            request(app)
+                .delete(`/api/pregnant/${pregnantId}`)
+                .set('authorization', adminAuth)
+                .expect(204)
+                .end(err => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    Pregnant.find({_id: pregnantId}, (err, results) => {
+                        expect(results.length).to.equal(0);
+                        done(err);
+                    });
+                });
+        });
+    });
+
     describe('Fetch Pregnant Tests', () => {
 
         before(done => Pregnant.spawn(pregnant, done));
