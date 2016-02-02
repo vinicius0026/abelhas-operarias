@@ -26,10 +26,17 @@
             var base = API_BASE_URL.concat('/pregnant');
 
             return crudUrls(base);
+        })(),
+
+        familiesUrls = (function () {
+            var base = API_BASE_URL.concat('/families');
+
+            return crudUrls(base);
         })();
 
     angular.module('abelhas-operarias')
         .constant('AUTH_URL', AUTH_URL)
         .constant('USERS_URLS', usersUrls)
-        .constant('PREGNANT_URLS', pregnantUrls);
+        .constant('PREGNANT_URLS', pregnantUrls)
+        .constant('FAMILIES_URLS', familiesUrls);
 })();
