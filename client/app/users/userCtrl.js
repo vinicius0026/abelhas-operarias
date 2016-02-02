@@ -17,7 +17,8 @@
             },
 
             fetchUser = function (userId) {
-                if ($stateParams.action === 'editar' || 'visualizar') {
+                if ($stateParams.action === 'editar' ||
+                    $stateParams.action === 'visualizar') {
                     usersService.get(userId)
                         .then(function (res) {
                             vm.user = res.data.data;
