@@ -51,6 +51,20 @@
                 } else {
                     toastr.warning('Preencha todos os campos obrigatórios.');
                 }
+            },
+
+            fetchPregnant = function (pregnantId) {
+                if ($stateParams.action === 'editar' ||
+                    $stateParams.action === 'visualizar') {
+                    pregnantService.get(pregnantId)
+                        .then(function (res) {
+                            vm.pregnant = res.data.data;
+                        }, function () {
+                            toastr.error('Erro ao ler dados da gestante');
+                        });
+                } else {
+                    vm.pregnant = {};
+                }
             };
 
         vm.capitalizeFirstLetter = capitalizeFirstLetter;
@@ -58,6 +72,7 @@
         vm.savePregnant = savePregnant;
 
         validateAction(vm.action);
+        fetchPregnant($stateParams.id);
     };
 
     SinglePregnantCtrl.$inject = ['$state', '$stateParams', 'toastr',
