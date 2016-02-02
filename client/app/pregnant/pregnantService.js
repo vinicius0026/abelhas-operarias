@@ -11,17 +11,27 @@
                     data: data
                 });
             },
+
             get = function (pregnantId) {
                 return ApiRequests.req({
                     method: 'GET',
                     url: PREGNANT_URLS.one(pregnantId)
+                });
+            },
+
+            update = function (pregnantId, data) {
+                return ApiRequests.req({
+                    method: 'PUT',
+                    url: PREGNANT_URLS.one(pregnantId),
+                    data: data
                 });
             };
 
 
         return {
             create: create,
-            get: get
+            get: get,
+            update: update
         };
     };
 
