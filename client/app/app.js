@@ -74,6 +74,7 @@
         'ui.bootstrap',
         'angular-confirm',
         'ui.utils.masks',
+        'idf.br-filters',
         // App
         'constants-auth-events',
         'factory-api-requests',

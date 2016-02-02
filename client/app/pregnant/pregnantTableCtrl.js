@@ -41,7 +41,10 @@
          */
         vm.dtColumns = [
             DTColumnBuilder.newColumn('name').withTitle('Nome'),
-            DTColumnBuilder.newColumn('cpf').withTitle('CPF'),
+            DTColumnBuilder.newColumn('cpf').withTitle('CPF')
+                .renderWith(function (data) {
+                    return $filter('brCpf')(data);
+                }),
             DTColumnBuilder.newColumn('age').withTitle('Idade')
                 .withOption('searchable', false),
             DTColumnBuilder.newColumn('createdAt').withTitle('Data de Cadastro')
