@@ -1,1 +1,24 @@
-<h1>{{ vm.test }}</h1>
+<div class="page">
+    <div class="pagecontent">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="tile">
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font">Famílias</h1>
+                        <ul class="controls">
+                            <li>
+                                <a ui-sref="app.families.family({action: 'cadastrar'})"><i class="fa fa-plus mr-5"></i> Cadastrar Família</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tile-body" ng-controller="FamiliesTableCtrl as showCase">
+                        <div class="table-responsive-wide">
+                            <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-stripped table-hover table-custom">
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
