@@ -5,16 +5,23 @@
 
     var pregnantService = function (ApiRequests, PREGNANT_URLS) {
         var create = function (data) {
-            return ApiRequests.req({
-                method: 'POST',
-                url: PREGNANT_URLS.base,
-                data: data
-            });
-        };
+                return ApiRequests.req({
+                    method: 'POST',
+                    url: PREGNANT_URLS.base,
+                    data: data
+                });
+            },
+            get = function (pregnantId) {
+                return ApiRequests.req({
+                    method: 'POST',
+                    url: PREGNANT_URLS.one(pregnantId)
+                });
+            };
 
 
         return {
-            create: create
+            create: create,
+            get: get
         };
     };
 
