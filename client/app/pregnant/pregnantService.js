@@ -25,13 +25,20 @@
                     url: PREGNANT_URLS.one(pregnantId),
                     data: data
                 });
-            };
+            },
 
+            remove = function (pregnantId) {
+                return ApiRequests.req({
+                    method: 'DELETE',
+                    url: PREGNANT_URLS.one(pregnantId)
+                });
+            };
 
         return {
             create: create,
             get: get,
-            update: update
+            update: update,
+            remove: remove
         };
     };
 
