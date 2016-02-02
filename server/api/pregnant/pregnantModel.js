@@ -12,8 +12,8 @@ var CPF = require('cpf_cnpj').CPF,
     Pregnant,
     Schema = mongoose.Schema,
 
-    pregnantCreateMask = 'name,cpf,occupation,age,spouse(name,occupation,age),' +
-        'numberOfChildren,ageOfChildren,babyGender,familyIncome,' +
+    pregnantCreateMask = 'name,cpf,occupation,age,spouse(name,occupation,' +
+        'age),numberOfChildren,ageOfChildren,babyGender,familyIncome,' +
         'familyIncome,religion,education,phone,address,neighborhood,' +
         'reference,ownHouse,rentValue,dateForDonation,referral,obs',
     pregnantMask = `id,createdAt,${pregnantCreateMask}`,

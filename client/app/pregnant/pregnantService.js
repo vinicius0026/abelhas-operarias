@@ -47,4 +47,4 @@
 
     angular.module('abelhas-operarias')
         .factory('pregnantService', pregnantService);
- })();
+})();

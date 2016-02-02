@@ -2,9 +2,9 @@
     /* global angular */
     'use strict';
 
-    var PregnantTableCtrl = function ($compile, $scope, $filter, DTOptionsBuilder,
-                                   DTColumnBuilder, PREGNANT_URLS,
-                                   DT_LANGUAGE) {
+    var PregnantTableCtrl = function ($compile, $scope, $filter,
+                                      DTOptionsBuilder, DTColumnBuilder,
+                                      PREGNANT_URLS, DT_LANGUAGE) {
         var vm = this;
 
         vm.dtOptions = DTOptionsBuilder.newOptions()
@@ -58,8 +58,8 @@
                     return '<a ng-click="vm.viewPregnant(\'' + data._id +
                         '\')" class="btn btn-xs btn-default">' +
                         '<i class="fa fa-search"></i> Detalhes</a>' +
-                        '<a ng-click="vm.removePregnant(\'' + data._id + '\')" ' +
-                        'class="btn btn-xs btn-lightred" confirm="Tem ' +
+                        '<a ng-click="vm.removePregnant(\'' + data._id + '\'' +
+                        ')" class="btn btn-xs btn-lightred" confirm="Tem ' +
                         'certeza que pretende remover esta gestante? ' +
                         'Esta ação não pode ser desfeita."' +
                         'confirm-settings="{defaultLabels: ' +

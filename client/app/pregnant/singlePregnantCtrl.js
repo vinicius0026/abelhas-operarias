@@ -3,7 +3,8 @@
 
     'use strict';
 
-    var SinglePregnantCtrl = function ($state, $stateParams, toastr, pregnantService) {
+    var SinglePregnantCtrl = function ($state, $stateParams, toastr,
+                                       pregnantService) {
         var vm = this,
 
             validActions = ['cadastrar', 'visualizar', 'editar'],

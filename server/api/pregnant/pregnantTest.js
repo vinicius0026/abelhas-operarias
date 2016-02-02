@@ -1,7 +1,7 @@
 /**
  * Pregnant API tests
  */
-/* globals describe, it, before, after, afterEach */
+/* globals describe, it, before, beforeEach, after, afterEach */
 
 'use strict';
 
@@ -179,30 +179,30 @@ describe('Pregnant API Tests', () => {
         afterEach(done => Pregnant.remove({}, done));
 
         it('should be able to update pregnant, but cpf should not be changed',
-                done => {
+            done => {
 
-            request(app)
-                .put(`/api/pregnant/${pregnantId}`)
-                .send(updateData)
-                .set('authorization', adminAuth)
-                .expect(200)
-                .expect(res => {
-                    var _pregnant = res.body.data,
-                        expected = _.cloneDeep(updateData);
+                request(app)
+                    .put(`/api/pregnant/${pregnantId}`)
+                    .send(updateData)
+                    .set('authorization', adminAuth)
+                    .expect(200)
+                    .expect(res => {
+                        var _pregnant = res.body.data,
+                            expected = _.cloneDeep(updateData);
 
-                    expect(_pregnant.id).to.exist;
-                    delete _pregnant.id;
-                    expect(_pregnant.createdAt).to.exist;
-                    delete _pregnant.createdAt;
-                    expect(_pregnant.cpf).to.equal(pregnant.cpf);
-                    delete(_pregnant.cpf);
-                    delete(expected.cpf);
-                    delete _pregnant.dateForDonation;
-                    delete expected.dateForDonation;
-                    expect(_pregnant).to.deep.equal(expected);
-                })
-                .end(done);
-        });
+                        expect(_pregnant.id).to.exist;
+                        delete _pregnant.id;
+                        expect(_pregnant.createdAt).to.exist;
+                        delete _pregnant.createdAt;
+                        expect(_pregnant.cpf).to.equal(pregnant.cpf);
+                        delete(_pregnant.cpf);
+                        delete(expected.cpf);
+                        delete _pregnant.dateForDonation;
+                        delete expected.dateForDonation;
+                        expect(_pregnant).to.deep.equal(expected);
+                    })
+                    .end(done);
+            });
     });
 
     describe('Delete Pregnant Tests', () => {
