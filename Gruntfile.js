@@ -513,6 +513,15 @@ module.exports = function (grunt) {
             }
         },
 
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec'
+                }
+            },
+            src: ['./server/api/**/*Test.js', './server/lib/**/*Test.js']
+        },
+
         // Add new app release
         release: {
             options: {
@@ -554,6 +563,8 @@ module.exports = function (grunt) {
         'env:test',
         'karma'
     ]);
+
+    grunt.registerTask('test', ['env:test', 'mochaTest']);
 
     grunt.registerTask('build', [
         'clean:build',
