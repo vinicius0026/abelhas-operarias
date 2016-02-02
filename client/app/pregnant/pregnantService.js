@@ -13,7 +13,7 @@
             },
             get = function (pregnantId) {
                 return ApiRequests.req({
-                    method: 'POST',
+                    method: 'GET',
                     url: PREGNANT_URLS.one(pregnantId)
                 });
             };
