@@ -42,6 +42,23 @@ var datatablesQuery = require('datatables-query'),
             });
         },
 
+        update: function (req, res) {
+            var pregnant = req.fiddus.pregnant,
+                updateData = req.body;
+
+            pregnant.update(updateData, (err, pregnant) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.send({
+                    ok: true,
+                    info: `Updated pregnant ${pregnant.id}`,
+                    data: pregnant
+                });
+            });
+        },
+
         fetch: function (req, res) {
             var params = req.body,
                 query = datatablesQuery(Pregnant);

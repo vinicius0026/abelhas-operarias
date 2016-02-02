@@ -110,7 +110,6 @@ describe('Pregnant API Tests', () => {
     });
 
     describe('Read Pregnant Tests', () => {
-
         var pregnantId;
 
         beforeEach(done => Pregnant.create(pregnant, (err, _pregnant) => {
@@ -135,6 +134,69 @@ describe('Pregnant API Tests', () => {
                     delete _pregnant.createdAt;
                     expect(new Date(_pregnant.dateForDonation).getTime()).to
                         .equal((new Date(pregnant.dateForDonation)).getTime());
+                    delete _pregnant.dateForDonation;
+                    delete expected.dateForDonation;
+                    expect(_pregnant).to.deep.equal(expected);
+                })
+                .end(done);
+        });
+    });
+
+    describe('Update Pregnant Tests', () => {
+        var pregnantId,
+            updateData = {
+                name: 'name1',
+                cpf: '52268879577',
+                occupation: 'occupation1',
+                age: 23,
+                spouse: {
+                    name: 'spouse.name1',
+                    occupation: 'spouse.occupation1',
+                    age: 23
+                },
+                numberOfChildren: 3,
+                ageOfChildren: '1,2,4',
+                babyGender: 'masculine',
+                familyIncome: 4321,
+                religion: 'religion1',
+                education: 'education1',
+                phone: '3333333333',
+                address: 'address1',
+                neighborhood: 'neighborhood1',
+                reference: 'reference1',
+                ownHouse: false,
+                rentValue: 321,
+                dateForDonation: Date.now(),
+                referral: 'referral1',
+                obs: 'obs1'
+            };
+
+        beforeEach(done => Pregnant.create(pregnant, (err, _pregnant) => {
+            pregnantId = _pregnant._id;
+            done(err);
+        }));
+
+        afterEach(done => Pregnant.remove({}, done));
+
+        it('should be able to update pregnant, but cpf should not be changed',
+                done => {
+
+            request(app)
+                .put(`/api/pregnant/${pregnantId}`)
+                .send(updateData)
+                .set('authorization', adminAuth)
+                .expect(200)
+                .expect(res => {
+                    var _pregnant = res.body.data,
+                        expected = _.cloneDeep(updateData);
+
+                    expect(_pregnant.id).to.exist;
+                    delete _pregnant.id;
+                    expect(_pregnant.createdAt).to.exist;
+                    delete _pregnant.createdAt;
+                    expect(_pregnant.cpf).to.equal(pregnant.cpf);
+                    delete(_pregnant.cpf);
+                    delete(expected.cpf);
                     delete _pregnant.dateForDonation;
                     delete expected.dateForDonation;
                     expect(_pregnant).to.deep.equal(expected);

@@ -7,6 +7,7 @@
 var CPF = require('cpf_cnpj').CPF,
     mask = require('json-mask'),
     mongoose = require('mongoose'),
+    _ = require('lodash'),
 
     Pregnant,
     Schema = mongoose.Schema,
@@ -15,8 +16,8 @@ var CPF = require('cpf_cnpj').CPF,
         'numberOfChildren,ageOfChildren,babyGender,familyIncome,' +
         'familyIncome,religion,education,phone,address,neighborhood,' +
         'reference,ownHouse,rentValue,dateForDonation,referral,obs',
-
     pregnantMask = `id,createdAt,${pregnantCreateMask}`,
+    pregnantUpdateMask = pregnantCreateMask.split('cpf,').join(''),
 
     PregnantSchema = new Schema({
         name: {type: String, require: true, trim: true},
@@ -52,6 +53,13 @@ var CPF = require('cpf_cnpj').CPF,
 PregnantSchema.methods = {
     read: function (callback) {
         callback(null, mask(this, pregnantMask));
+    },
+
+    update: function (data, callback) {
+        _.merge(this, mask(data, pregnantUpdateMask));
+
+        this.save((err, pregnant) =>
+            callback(err, mask(pregnant, pregnantMask)));
     }
 };
 

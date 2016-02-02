@@ -17,6 +17,9 @@ router.post('/', userAuth.isAuthenticated(), controller.create);
 router.get('/:id', userAuth.isAuthenticated(),
     controller.insertPregnantInRequest, controller.read);
 
+router.put('/:id', userAuth.isAuthenticated(),
+    controller.insertPregnantInRequest, controller.update);
+
 router.post('/fetch', userAuth.isAuthenticated(), controller.fetch);
 
 module.exports = router;
