@@ -65,11 +65,17 @@
                 } else {
                     vm.pregnant = {};
                 }
+            },
+
+            editPregnant = function () {
+                $state.go('app.pregnant.pregnant', {action: 'editar',
+                    id: vm.pregnant.id}, {reload: true});
             };
 
         vm.capitalizeFirstLetter = capitalizeFirstLetter;
         vm.action = $stateParams.action;
         vm.savePregnant = savePregnant;
+        vm.editPregnant = editPregnant;
 
         validateAction(vm.action);
         fetchPregnant($stateParams.id);
