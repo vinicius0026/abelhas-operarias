@@ -109,6 +109,40 @@ describe('Pregnant API Tests', () => {
         });
     });
 
+    describe('Read Pregnant Tests', () => {
+
+        var pregnantId;
+
+        beforeEach(done => Pregnant.create(pregnant, (err, _pregnant) => {
+            pregnantId = _pregnant._id;
+            done(err);
+        }));
+
+        afterEach(done => Pregnant.remove({}, done));
+
+        it('should be able to read pregnant details if authenticated', done => {
+            request(app)
+                .get(`/api/pregnant/${pregnantId}`)
+                .set('authorization', adminAuth)
+                .expect(200)
+                .expect(res => {
+                    var _pregnant = res.body.data,
+                        expected = _.cloneDeep(pregnant);
+
+                    expect(_pregnant.id).to.exist;
+                    delete _pregnant.id;
+                    expect(_pregnant.createdAt).to.exist;
+                    delete _pregnant.createdAt;
+                    expect(new Date(_pregnant.dateForDonation).getTime()).to
+                        .equal((new Date(pregnant.dateForDonation)).getTime());
+                    delete _pregnant.dateForDonation;
+                    delete expected.dateForDonation;
+                    expect(_pregnant).to.deep.equal(expected);
+                })
+                .end(done);
+        });
+    });
+
     describe('Fetch Pregnant Tests', () => {
 
         before(done => Pregnant.spawn(pregnant, done));

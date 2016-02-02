@@ -49,6 +49,12 @@ var CPF = require('cpf_cnpj').CPF,
         createdAt: {type: Date, default: Date.now()}
     });
 
+PregnantSchema.methods = {
+    read: function (callback) {
+        callback(null, mask(this, pregnantMask));
+    }
+};
+
 PregnantSchema.statics = {
     spawn: function (data, callback) {
         Pregnant.create(mask(data, pregnantCreateMask),

@@ -26,6 +26,22 @@ var datatablesQuery = require('datatables-query'),
             });
         },
 
+        read: function (req, res) {
+            var pregnant = req.fiddus.pregnant;
+
+            pregnant.read((err, pregnant) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.send({
+                    ok: true,
+                    info: `Got pregnant ${pregnant.id}`,
+                    data: pregnant
+                });
+            });
+        },
+
         fetch: function (req, res) {
             var params = req.body,
                 query = datatablesQuery(Pregnant);
@@ -36,6 +52,21 @@ var datatablesQuery = require('datatables-query'),
                 errorHandler(err, res);
             });
 
+        },
+
+        insertPregnantInRequest: function (req, res, next) {
+            var pregnantId = req.params.id;
+
+            req.fiddus = {};
+
+            Pregnant.findById(pregnantId, (err, pregnant) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                req.fiddus.pregnant = pregnant;
+                next();
+            });
         }
     };
 
