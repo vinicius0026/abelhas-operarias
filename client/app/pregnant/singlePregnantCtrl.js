@@ -24,8 +24,14 @@
                     .then(function () {
                         toastr.success('Gestante cadastrada com sucesso.');
                         $state.go('app.pregnant.list');
-                    }, function () {
-                        toastr.error('Erro ao cadastrar gestante. Favor tentar novamente');
+                    }, function (err) {
+                        if (/\$cpf_1 dup key/.test(err.data.info)) {
+                            return toastr.error('CPF já cadastrado no ' +
+                                'sistema.');
+                        }
+
+                        toastr.error('Erro ao cadastrar gestante. ' +
+                            'Favor tentar novamente');
                     });
             },
 
@@ -49,6 +55,20 @@
                         updatePregnant(pregnantData, $stateParams.id);
                     }
                 } else {
+                    if (!vm.form.name.$valid) {
+                        return toastr.warning('Preencha o nome da gestante.');
+                    }
+
+                    if (!vm.form.cpf.$valid) {
+                        var msg = !vm.form.cpf.$viewValue ? 'Preencha o CPF ' +
+                            'da gestante' : 'O CPF informado é inválido.';
+                        return toastr.warning(msg);
+                    }
+
+                    if (!vm.form.age.$valid) {
+                        return toastr.warning('Preencha a idade da gestante.');
+                    }
+
                     toastr.warning('Preencha todos os campos obrigatórios.');
                 }
             },

@@ -29,7 +29,7 @@
                                         class="text-lightred text-md">*</span></label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name"
+                                        <input type="text" class="form-control" id="name" name="name"
                                                placeholder="Nome completo da gestante" ng-model="vm.pregnant.name" required
                                                ng-disabled="vm.action === 'visualizar'">
                                     </div>
@@ -40,7 +40,7 @@
                                         class="text-lightred text-md">*</span></label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="cpf"
+                                        <input type="text" class="form-control" id="cpf" name="cpf"
                                                placeholder="CPF da gestante" ng-model="vm.pregnant.cpf" required
                                                ng-disabled="vm.action === 'visualizar'" ui-br-cpf-mask>
                                     </div>
@@ -58,7 +58,7 @@
                                     <label for="age" class="col-sm-2 control-label">Idade: <span
                                         class="text-lightred text-md">*</span></label>
                                     <div class="col-sm-2">
-                                        <input type="number" class="form-control" id="age"
+                                        <input type="number" class="form-control" id="age" name="age"
                                                placeholder="Idade da gestante" ng-model="vm.pregnant.age" required
                                                ng-disabled="vm.action === 'visualizar'">
                                     </div>
