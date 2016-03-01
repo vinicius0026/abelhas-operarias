@@ -49,6 +49,7 @@
             },
 
             saveFamily = function (familyData) {
+                console.log('familyData', familyData);
                 if (vm.form.$valid) {
                     if (vm.action === 'cadastrar') {
                         createFamily(familyData);
@@ -62,7 +63,7 @@
 
                     if (!vm.form.wifeCpf.$valid) {
                         var msg = !vm.form.wifeCpf.$viewValue ? 'Preencha o CPF ' +
-                        'da esposa.' : 'O CPF informado é inválido.';
+                            'da esposa.' : 'O CPF informado é inválido.';
                         return toastr.warning(msg);
                     }
 
@@ -75,7 +76,7 @@
                     $stateParams.action === 'visualizar') {
                     familiesService.get(familyId)
                         .then(function (res) {
-                            vm.pregnant = res.data.data;
+                            vm.family = res.data.data;
                         }, function () {
                             toastr.error('Erro ao ler dados da gestante');
                         });
@@ -91,8 +92,8 @@
 
         vm.capitalizeFirstLetter = capitalizeFirstLetter;
         vm.action = $stateParams.action;
-        vm.savePregnant = saveFamily;
-        vm.editPregnant = editFamily;
+        vm.saveFamily = saveFamily;
+        vm.editFamily = editFamily;
 
         validateAction(vm.action);
         fetchFamily($stateParams.id);
