@@ -2,12 +2,29 @@
     /* global angular */
     'use strict';
 
-    var FamiliesCtrl = function () {
-        var vm = this;
+    var FamiliesCtrl = function ($state, familiesService, toastr) {
+        var vm = this,
+
+            viewFamily = function (familyId) {
+                $state.go('app.families.family', {action: 'visualizar',
+                    id: familyId}, {reload: true});
+            },
+
+            removeFamily = function (familyId) {
+                familyService.remove(familyId)
+                    .then(function () {
+                        toastr.success('Família removida com sucesso.');
+                        $state.go('app.family.list', {}, {reload: true});
+                    }, function () {
+                        toastr.error('Erro ao remover família.');
+                    })
+            };
+
+        vm.viewFamily = viewFamily;
+        vm.removeFamily = removeFamily;
     };
 
-    FamiliesCtrl.$inject = [];
-
+    FamiliesCtrl.$inject = ['$state', 'familiesService', 'toastr'];
 
     angular.module('abelhas-operarias')
         .controller('FamiliesCtrl', FamiliesCtrl);
