@@ -80,7 +80,8 @@
                     pregnantService.get(pregnantId)
                         .then(function (res) {
                             vm.pregnant = res.data.data;
-                            vm.pregnant.dateForDonation = new Date(res.data.data.dateForDonation);
+                            vm.pregnant.dateForDonation =
+                                new Date(res.data.data.dateForDonation);
                         }, function () {
                             toastr.error('Erro ao ler dados da gestante');
                         });

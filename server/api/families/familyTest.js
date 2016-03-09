@@ -1,12 +1,13 @@
 /**
  * Families API Tests
  */
-/* globals describe, it, before */
+/* globals describe, it, before, after*/
+
+'use strict';
 
 var async = require('async'),
     expect = require('chai').expect,
     request = require('supertest'),
-    _ = require('lodash'),
 
     app = require('../../../server'),
     Family = require('./familyModel'),
@@ -25,7 +26,7 @@ describe('Families API Tests', () => {
             wife: {
                 name: 'wife.name',
                 cpf: '88543486785',
-                occupation: 'occupation',
+                occupation: 'occupation'
             },
             husband: {
                 name: 'husband.name',
@@ -78,10 +79,12 @@ describe('Families API Tests', () => {
 
                     expect(_family.wife.name).to.equal(family.wife.name);
                     expect(_family.wife.cpf).to.equal(family.wife.cpf);
-                    expect(_family.wife.occupation).to.equal(family.wife.occupation);
+                    expect(_family.wife.occupation).to
+                        .equal(family.wife.occupation);
                     expect(_family.husband.name).to.equal(family.husband.name);
                     expect(_family.husband.cpf).to.equal(family.husband.cpf);
-                    expect(_family.husband.occupation).to.equal(family.husband.occupation);
+                    expect(_family.husband.occupation).to
+                        .equal(family.husband.occupation);
                 })
                 .end(done);
         });

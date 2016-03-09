@@ -49,21 +49,23 @@
             },
 
             saveFamily = function (familyData) {
-                console.log('familyData', familyData);
+
                 if (vm.form.$valid) {
+
                     if (vm.action === 'cadastrar') {
                         createFamily(familyData);
                     } else if (vm.action === 'editar') {
                         updateFamily(familyData, $stateParams.id);
                     }
                 } else {
+
                     if (!vm.form.wifeName.$valid) {
                         return toastr.warning('Preencha o nome da esposa.');
                     }
 
                     if (!vm.form.wifeCpf.$valid) {
-                        var msg = !vm.form.wifeCpf.$viewValue ? 'Preencha o CPF ' +
-                            'da esposa.' : 'O CPF informado é inválido.';
+                        var msg = !vm.form.wifeCpf.$viewValue ? 'Preencha o ' +
+                        'CPF da esposa.' : 'O CPF informado é inválido.';
                         return toastr.warning(msg);
                     }
 

@@ -33,7 +33,7 @@ var CPF = require('cpf_cnpj').CPF,
                 type: String, index: {unique: true, dropDups: true}, trim: true,
                 validate: CPF.isValid.bind(CPF)
             },
-            occupation: {type: String, trim: true},
+            occupation: {type: String, trim: true}
         },
         numberOfChildren: {type: Number, min: 0},
         ageOfChildren: {type: String, trim: true},

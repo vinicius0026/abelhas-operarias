@@ -45,7 +45,8 @@
                 .renderWith(function (data) {
                     return $filter('brCpf')(data);
                 }),
-            DTColumnBuilder.newColumn('wife.occupation').withTitle('Profissão da Esposa')
+            DTColumnBuilder.newColumn('wife.occupation')
+                .withTitle('Profissão da Esposa')
                 .withOption('searchable', false),
             DTColumnBuilder.newColumn('createdAt').withTitle('Data de Cadastro')
                 .withOption('searchable', false).renderWith(function (data) {
