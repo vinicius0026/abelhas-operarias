@@ -77,6 +77,8 @@
                     familiesService.get(familyId)
                         .then(function (res) {
                             vm.family = res.data.data;
+                            vm.family.dateForDonation =
+                                new Date(res.data.data.dateForDonation);
                         }, function () {
                             toastr.error('Erro ao ler dados da gestante');
                         });
