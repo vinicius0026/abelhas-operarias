@@ -189,9 +189,8 @@
 
                                     <div class="col-sm-4">
                                         <select class="form-control" id="ownHouse" ng-model="vm.pregnant.ownHouse"
-                                                ng-disabled="vm.action === 'visualizar'">
-                                            <option value="true">Sim</option>
-                                            <option value="false">Não</option>
+                                                ng-disabled="vm.action === 'visualizar'"
+                                                ng-options="option.value as option.name for option in [{name: 'Sim', value: true}, {name: 'Não', value: false}]">
                                         </select>
                                     </div>
                                     <label for="rentValue" class="col-sm-2 control-label">Valor do Aluguel:</label>
@@ -230,7 +229,6 @@
                                                   ng-disabled="vm.action === 'visualizar'"></textarea>
                                     </div>
                                 </div>
-
                             </form>
 
 
