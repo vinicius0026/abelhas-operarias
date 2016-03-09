@@ -40,12 +40,12 @@
          * @type {Array} Array of columns of DataTable
          */
         vm.dtColumns = [
-            DTColumnBuilder.newColumn('name').withTitle('Nome'),
-            DTColumnBuilder.newColumn('cpf').withTitle('CPF')
+            DTColumnBuilder.newColumn('wife.name').withTitle('Nome da Esposa'),
+            DTColumnBuilder.newColumn('wife.cpf').withTitle('CPF da Esposa')
                 .renderWith(function (data) {
                     return $filter('brCpf')(data);
                 }),
-            DTColumnBuilder.newColumn('age').withTitle('Idade')
+            DTColumnBuilder.newColumn('wife.occupation').withTitle('Profissão da Esposa')
                 .withOption('searchable', false),
             DTColumnBuilder.newColumn('createdAt').withTitle('Data de Cadastro')
                 .withOption('searchable', false).renderWith(function (data) {
@@ -55,10 +55,10 @@
                 .notSortable().withOption('searchable', false)
                 .renderWith(function (data /*, type, full, meta*/) {
 
-                    return '<a ng-click="vm.viewPregnant(\'' + data._id +
+                    return '<a ng-click="vm.viewFamily(\'' + data._id +
                         '\')" class="btn btn-xs btn-default">' +
                         '<i class="fa fa-search"></i> Detalhes</a>' +
-                        '<a ng-click="vm.removePregnant(\'' + data._id + '\'' +
+                        '<a ng-click="vm.removeFamily(\'' + data._id + '\'' +
                         ')" class="btn btn-xs btn-lightred" confirm="Tem ' +
                         'certeza que pretende remover esta gestante? ' +
                         'Esta ação não pode ser desfeita."' +
