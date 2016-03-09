@@ -11,13 +11,13 @@
             },
 
             removeFamily = function (familyId) {
-                familyService.remove(familyId)
+                familiesService.remove(familyId)
                     .then(function () {
                         toastr.success('Família removida com sucesso.');
-                        $state.go('app.family.list', {}, {reload: true});
+                        $state.go('app.families.list', {}, {reload: true});
                     }, function () {
                         toastr.error('Erro ao remover família.');
-                    })
+                    });
             };
 
         vm.viewFamily = viewFamily;
