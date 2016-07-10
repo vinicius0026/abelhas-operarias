@@ -44,7 +44,7 @@
                             {action: 'visualizar', id: vm.family.id},
                             {reload: true});
                     }, function () {
-                        toastr.error('Erro ao atualizar dados da gestante');
+                        toastr.error('Erro ao atualizar dados da família');
                     });
             },
 
@@ -59,12 +59,12 @@
                     }
                 } else {
 
-                    if (!vm.form.wifeName.$valid) {
+                    if (!vm.form.name.$valid) {
                         return toastr.warning('Preencha o nome da esposa.');
                     }
 
-                    if (!vm.form.wifeCpf.$valid) {
-                        var msg = !vm.form.wifeCpf.$viewValue ? 'Preencha o ' +
+                    if (!vm.form.cpf.$valid) {
+                        var msg = !vm.form.cpf.$viewValue ? 'Preencha o ' +
                         'CPF da esposa.' : 'O CPF informado é inválido.';
                         return toastr.warning(msg);
                     }
@@ -82,7 +82,7 @@
                             vm.family.dateForDonation =
                                 new Date(res.data.data.dateForDonation);
                         }, function () {
-                            toastr.error('Erro ao ler dados da gestante');
+                            toastr.error('Erro ao ler dados da família');
                         });
                 } else {
                     vm.family = {};

@@ -25,160 +25,45 @@
                             <form class="form-horizontal" role="form" name="vm.form">
 
                                 <div class="form-group">
-                                    <label for="wifeName" class="col-sm-2 control-label">Nome da Esposa: <span
+                                    <label for="name" class="col-sm-2 control-label">Nome da Esposa: <span
                                         class="text-lightred text-md">*</span></label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="wifeName" name="wifeName"
-                                               placeholder="Nome completo da esposa" ng-model="vm.family.wife.name" required
+                                        <input type="text" class="form-control" id="name" name="name"
+                                               placeholder="Nome completo" ng-model="vm.family.name" required
                                                ng-disabled="vm.action === 'visualizar'">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="wifeCpf" class="col-sm-2 control-label">CPF da Esposa: <span
+                                    <label for="cpf" class="col-sm-2 control-label">CPF da Esposa: <span
                                         class="text-lightred text-md">*</span></label>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="wifeCpf" name="wifeCpf"
-                                               placeholder="CPF da esposa" ng-model="vm.family.wife.cpf" required
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="cpf" name="cpf"
+                                               placeholder="CPF da esposa" ng-model="vm.family.cpf" required
                                                ng-disabled="vm.action === 'visualizar'" ui-br-cpf-mask>
                                     </div>
-
-                                    <label for="wifeOccupation" class="col-sm-2 control-label">Profissão da Esposa:</label>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="wifeOccupation"
-                                               placeholder="Profissão da esposa" ng-model="vm.family.wife.occupation"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
                                 </div>
 
-                                <hr class="line-dashed line-full"/>
-
-                                <div class="form-group">
-                                    <label for="husbandName" class="col-sm-2 control-label">Nome do Esposo:</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="husbandName" name="husbandName"
-                                               placeholder="Nome completo do esposo" ng-model="vm.family.husband.name"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="husbandCpf" class="col-sm-2 control-label">CPF do Esposo:</label>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="husbandCpf" name="husbandCpf"
-                                               placeholder="CPF do esposo" ng-model="vm.family.husband.cpf"
-                                               ng-disabled="vm.action === 'visualizar'" ui-br-cpf-mask>
-                                    </div>
-
-                                    <label for="husbandOccupation" class="col-sm-2 control-label">Profissão do Esposo:</label>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="husbandOccupation"
-                                               placeholder="Profissão do esposo" ng-model="vm.family.husband.occupation"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-                                </div>
-
-                                <hr class="line-dashed line-full"/>
-
-
-                                <div class="form-group">
-                                    <label for="numberOfChildren" class="col-sm-2 control-label">Número de Filhos:</label>
-                                    <div class="col-sm-2">
-                                        <input type="number" class="form-control" id="numberOfChildren"
-                                               placeholder="Número de filhos" ng-model="vm.family.numberOfChildren"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-
-                                    <label for="ageOfChildren" class="col-sm-2 control-label">Idade dos Filhos:</label>
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="ageOfChildren"
-                                               placeholder="Idade dos filhos" ng-model="vm.family.ageOfChildren"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-
-                                    <label for="religion" class="col-sm-2 control-label">Religião:</label>
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="religion"
-                                               placeholder="Religião" ng-model="vm.family.religion"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="phone" class="col-sm-2 control-label">Telefone:</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="phone"
-                                               placeholder="Telefone" ng-model="vm.family.phone"
-                                               ng-disabled="vm.action === 'visualizar'" ui-br-phone-number>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="address" class="col-sm-2 control-label">Endereço:</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="address"
-                                               placeholder="Rua e número" ng-model="vm.family.address"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-                                </div>
 
                                 <div class="form-group">
                                     <label for="neighborhood" class="col-sm-2 control-label">Bairro:</label>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-10">
                                         <input type="text" class="form-control" id="neighborhood"
                                                placeholder="Bairro" ng-model="vm.family.neighborhood"
                                                ng-disabled="vm.action === 'visualizar'">
                                     </div>
-                                    <label for="reference" class="col-sm-2 control-label">Referência:</label>
-
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="reference"
-                                               placeholder="Referência" ng-model="vm.family.reference"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
                                 </div>
-
                                 <hr class="line-dashed line-full"/>
-
-                                <div class="form-group">
-                                    <label for="dateForDonation" class="col-sm-2 control-label">Data para Receber o Enxoval:</label>
-
-                                    <div class="col-sm-4">
-                                        <input type="date" class="form-control" id="dateForDonation"
-                                               placeholder="Telefone" ng-model="vm.family.dateForDonation"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-
-                                    <label for="referral" class="col-sm-2 control-label">Encaminhado por:</label>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="referral"
-                                               placeholder="Instiuição que encaminhou a família" ng-model="vm.family.referral"
-                                               ng-disabled="vm.action === 'visualizar'">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="obs" class="col-sm-2 control-label">Observações</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="obs"
-                                                  placeholder="Observações" ng-model="vm.family.obs"
-                                                  ng-disabled="vm.action === 'visualizar'"></textarea>
-                                    </div>
-                                </div>
-
                             </form>
 
                             <div class="row">
                                 <span class="controls pull-right">
-                                      <a ui-sref="app.family.list" class="btn btn-ef btn-ef-1 btn-ef-1-default btn-ef-1a btn-rounded-20 mr-5"
+                                      <a ui-sref="app.families.list" class="btn btn-ef btn-ef-1 btn-ef-1-default btn-ef-1a btn-rounded-20 mr-5"
                                          uib-tooltip="Voltar"><i class="fa fa-arrow-left"></i></a>
                                       <a href="" ng-click="vm.editFamily()" class="btn btn-ef btn-ef-1 btn-ef-1-orange btn-ef-1a btn-rounded-20 mr-5"
-                                         uib-tooltip="Editar"><i class="fa fa-pencil"></i></a>
+                                         uib-tooltip="Editar" ng-hide="vm.action === 'cadastrar'"><i class="fa fa-pencil"></i></a>
                                       <a href="" ng-click="vm.saveFamily(vm.family)" class="btn btn-ef btn-ef-1 btn-ef-1-success btn-ef-1a btn-rounded-20 mr-5"
                                          uib-tooltip="Salvar"><i class="fa fa-check"></i></a>
                                 </span>

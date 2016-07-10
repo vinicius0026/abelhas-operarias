@@ -40,14 +40,18 @@
          * @type {Array} Array of columns of DataTable
          */
         vm.dtColumns = [
-            DTColumnBuilder.newColumn('wife.name').withTitle('Nome da Esposa'),
-            DTColumnBuilder.newColumn('wife.cpf').withTitle('CPF da Esposa')
+            DTColumnBuilder.newColumn('name').withTitle('Nome'),
+            DTColumnBuilder.newColumn('cpf').withTitle('CPF')
                 .renderWith(function (data) {
                     return $filter('brCpf')(data);
                 }),
-            DTColumnBuilder.newColumn('wife.occupation')
-                .withTitle('Profissão da Esposa')
-                .withOption('searchable', false),
+            DTColumnBuilder.newColumn('neighborhood').withTitle('Bairro')
+                .renderWith(function (data) {
+                    if (!data) {
+                        return '-';
+                    }
+                    return data;
+                }),
             DTColumnBuilder.newColumn('createdAt').withTitle('Data de Cadastro')
                 .withOption('searchable', false).renderWith(function (data) {
                     return $filter('date')(data);
@@ -61,7 +65,7 @@
                         '<i class="fa fa-search"></i> Detalhes</a>' +
                         '<a ng-click="vm.removeFamily(\'' + data._id + '\'' +
                         ')" class="btn btn-xs btn-lightred" confirm="Tem ' +
-                        'certeza que pretende remover esta gestante? ' +
+                        'certeza que pretende remover esta família? ' +
                         'Esta ação não pode ser desfeita."' +
                         'confirm-settings="{defaultLabels: ' +
                         '{title: \'Confirmação\', ok: \'Ok\', ' +
