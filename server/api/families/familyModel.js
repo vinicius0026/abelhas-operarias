@@ -12,39 +12,17 @@ var CPF = require('cpf_cnpj').CPF,
     Family,
     Schema = mongoose.Schema,
 
-    familyCreateMask = 'wife(name,cpf,occupation),husband(name,occupation,' +
-        'cpf),numberOfChildren,ageOfChildren,religion,phone,address,' +
-        'neighborhood,reference,dateForDonation,referral,obs',
+    familyCreateMask = 'name,cpf,neighborhood',
     familyMask = `id,createdAt,${familyCreateMask}`,
     familyUpdateMask = familyCreateMask.split('cpf,').join(''),
 
     FamilySchema = new Schema({
-        wife: {
-            name: {type: String, require: true, trim: true},
-            cpf: {
-                type: String, index: {unique: true, dropDups: true}, trim: true,
-                validate: CPF.isValid.bind(CPF)
-            },
-            occupation: {type: String, trim: true}
+        name: {type: String, require: true, trim: true, index: true},
+        cpf: {
+            type: String, index: {unique: true, dropDups: true}, trim: true,
+            validate: CPF.isValid.bind(CPF)
         },
-        husband: {
-            name: {type: String, trim: true},
-            cpf: {
-                type: String, index: {unique: true, dropDups: true}, trim: true,
-                validate: CPF.isValid.bind(CPF)
-            },
-            occupation: {type: String, trim: true}
-        },
-        numberOfChildren: {type: Number, min: 0},
-        ageOfChildren: {type: String, trim: true},
-        religion: {type: String, trim: true},
-        phone: {type: String, trim: true},
-        address: {type: String, trim: true},
         neighborhood: {type: String, trim: true},
-        reference: {type: String, trim: true},
-        dateForDonation: {type: Date},
-        referral: {type: String, trim: true},
-        obs: {type: String, trim: true},
         createdAt: {type: Date, default: Date.now()}
     });
 

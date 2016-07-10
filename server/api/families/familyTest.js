@@ -23,26 +23,9 @@ describe('Families API Tests', () => {
         adminAuth,
 
         family = {
-            wife: {
-                name: 'wife.name',
-                cpf: '88543486785',
-                occupation: 'occupation'
-            },
-            husband: {
-                name: 'husband.name',
-                occupation: 'husband.occupation',
-                cpf: '60468046470'
-            },
-            numberOfChildren: 2,
-            ageOfChildren: '1,2',
-            religion: 'religion',
-            phone: '2222222222',
-            address: 'address',
-            neighborhood: 'neighborhood',
-            reference: 'reference',
-            dateForDonation: Date.now(),
-            referral: 'referral',
-            obs: 'obs'
+            name: 'wife.name',
+            cpf: '88543486785',
+            neighborhood: 'neighborhood'
         };
 
     before(done => {
@@ -77,14 +60,9 @@ describe('Families API Tests', () => {
                 .expect(res => {
                     var _family = res.body.data;
 
-                    expect(_family.wife.name).to.equal(family.wife.name);
-                    expect(_family.wife.cpf).to.equal(family.wife.cpf);
-                    expect(_family.wife.occupation).to
-                        .equal(family.wife.occupation);
-                    expect(_family.husband.name).to.equal(family.husband.name);
-                    expect(_family.husband.cpf).to.equal(family.husband.cpf);
-                    expect(_family.husband.occupation).to
-                        .equal(family.husband.occupation);
+                    expect(_family.name).to.equal(family.name);
+                    expect(_family.cpf).to.equal(family.cpf);
+                    expect(_family.neighborhood).to.equal(family.neighborhood);
                 })
                 .end(done);
         });
