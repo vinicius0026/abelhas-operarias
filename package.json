@@ -4,6 +4,7 @@
   "description": "Sistema de Controle para a Instituição Abelhas Operárias",
   "main": "server.js",
   "scripts": {
+    "pretest": "grunt lint",
     "test": "grunt test",
     "start": "node server.js",
     "postinstall": "bower install && grunt deploy"
