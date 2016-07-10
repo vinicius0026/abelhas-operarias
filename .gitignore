@@ -30,3 +30,4 @@ client/dist
 !.bowerrc
 !client/.scss-lint.yml
 !.keep
+!.travis.yml
