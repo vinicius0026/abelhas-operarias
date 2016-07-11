@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/vinicius0026/abelhas-operarias#readme",
   "dependencies": {
+    "async": "^2.0.0-rc.6",
     "body-parser": "^1.14.2",
     "chai": "^3.4.1",
     "composable-middleware": "^0.3.0",
