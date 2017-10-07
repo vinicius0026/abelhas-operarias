@@ -39,7 +39,8 @@
     "angular-confirm-modal": "~1.2.3",
     "angular-input-masks": "~2.1.1",
     "angular-i18n": "~1.4.9",
-    "angular-br-filters": "~0.5.0"
+    "angular-br-filters": "~0.5.0",
+    "moment": "^2.18.1"
   },
   "overrides": {
     "bootstrap": {
@@ -59,6 +60,12 @@
         "./dist/plugins/fixedheader/angular-datatables.fixedheader.min.js",
         "./dist/plugins/scroller/angular-datatables.scroller.min.js",
         "./dist/plugins/tabletools/angular-datatables.tabletools.min.js"
+      ]
+    },
+    "moment": {
+      "main": [
+        "./moment.js",
+        "./locale/pt-br.js"
       ]
     }
   },
