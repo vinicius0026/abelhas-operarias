@@ -60,17 +60,26 @@
                 .notSortable().withOption('searchable', false)
                 .renderWith(function (data /*, type, full, meta*/) {
 
-                    return '<a ng-click="vm.viewFamily(\'' + data._id +
-                        '\')" class="btn btn-xs btn-default">' +
-                        '<i class="fa fa-search"></i> Detalhes</a>' +
-                        '<a ng-click="vm.removeFamily(\'' + data._id + '\'' +
-                        ')" class="btn btn-xs btn-lightred" confirm="Tem ' +
+                    return '' +
+                    '<a ng-click="vm.viewFamily(\'' + data._id + '\')"' +
+                      ' class="btn btn-xs btn-default"' +
+                      ' style="margin-right: 10px">' +
+                        '<i class="fa fa-search"></i> Detalhes' +
+                    '</a>' +
+                    '<a ng-click="vm.removeFamily(\'' + data._id + '\'' + ')"' +
+                      ' class="btn btn-xs btn-lightred" confirm="Tem ' +
                         'certeza que pretende remover esta família? ' +
                         'Esta ação não pode ser desfeita."' +
                         'confirm-settings="{defaultLabels: ' +
                         '{title: \'Confirmação\', ok: \'Ok\', ' +
-                        'cancel: \'Cancelar\'}}">' +
-                        '<i class="fa fa-times"></i> Remover</a>';
+                        'cancel: \'Cancelar\'}}" style="margin-right: 10px">' +
+                        '<i class="fa fa-times"></i> Remover' +
+                    '</a>' +
+                    '<a ng-click="vm.openRegisterDonationModal(\'' + data._id +
+                        '\')" class="btn btn-xs btn-default">' +
+                        '<i class="fa fa-calendar-check-o"></i> ' +
+                        'Registrar Doação' +
+                    '</a>';
                 })
         ];
     };

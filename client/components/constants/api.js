@@ -31,7 +31,12 @@
         familiesUrls = (function () {
             var base = API_BASE_URL.concat('/families');
 
-            return crudUrls(base);
+            return Object.assign({}, crudUrls(base), {
+                registerDonation: function (id) {
+                    return base.concat('/registerMonthOfDonation/:id')
+                        .replace(':id', id);
+                }
+            });
         })();
 
     angular.module('abelhas-operarias')
