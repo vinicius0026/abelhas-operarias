@@ -13,7 +13,7 @@ var CPF = require('cpf_cnpj').CPF,
     Schema = mongoose.Schema,
 
     familyCreateMask = 'name,cpf,neighborhood',
-    familyMask = `id,createdAt,${familyCreateMask}`,
+    familyMask = `id,createdAt,monthsReceivedDonation,${familyCreateMask}`,
     familyUpdateMask = familyCreateMask.split('cpf,').join(''),
 
     FamilySchema = new Schema({
@@ -23,7 +23,8 @@ var CPF = require('cpf_cnpj').CPF,
             validate: CPF.isValid.bind(CPF)
         },
         neighborhood: {type: String, trim: true},
-        createdAt: {type: Date, default: Date.now()}
+        createdAt: {type: Date, default: Date.now()},
+        monthsReceivedDonation: [Date]
     });
 
 FamilySchema.methods = {
@@ -36,6 +37,10 @@ FamilySchema.methods = {
 
         this.save((err, family) =>
             callback(err, mask(family, familyMask)));
+    },
+    registerMonthOfDonationReceipt: function (month, callback) {
+        this.monthsReceivedDonation.push(month);
+        this.save(callback);
     }
 };
 

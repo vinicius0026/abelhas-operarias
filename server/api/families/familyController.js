@@ -5,6 +5,8 @@
 'use strict';
 
 var datatablesQuery = require('datatables-query'),
+    moment = require('moment'),
+
     errorHandler = require('../../lib/util/errorHandler'),
 
     Family = require('./familyModel'),
@@ -81,6 +83,23 @@ var datatablesQuery = require('datatables-query'),
                 errorHandler(err, res);
             });
 
+        },
+
+        registerMonthOfDonation: function (req, res) {
+            var family = req.fiddus.family,
+                month = moment(req.body.month);
+
+            family.registerMonthOfDonationReceipt(month, (err, family) => {
+                if (err) {
+                    return errorHandler(err, res);
+                }
+
+                res.send({
+                    ok: true,
+                    info: `Registered donation received in month ${month} ` +
+                        `for family ${family.id}`
+                });
+            });
         },
 
         insertFamilyInRequest: function (req, res, next) {
