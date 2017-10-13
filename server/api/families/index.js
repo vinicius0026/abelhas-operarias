@@ -24,4 +24,7 @@ router.delete('/:id', userAuth.isAuthenticated(), controller.delete);
 
 router.post('/fetch', userAuth.isAuthenticated(), controller.fetch);
 
+router.post('/registerMonthOfDonation/:id', userAuth.isAuthenticated(),
+    controller.insertFamilyInRequest, controller.registerMonthOfDonation);
+
 module.exports = router;

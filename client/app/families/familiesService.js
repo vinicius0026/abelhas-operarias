@@ -32,13 +32,22 @@
                     method: 'DELETE',
                     url: FAMILIES_URLS.one(id)
                 });
+            },
+
+            registerDonation = function (id, donationDate) {
+                return ApiRequests.req({
+                    method: 'POST',
+                    url: FAMILIES_URLS.registerDonation(id),
+                    data: { month: donationDate }
+                });
             };
 
         return {
             create: create,
             get: get,
             update: update,
-            remove: remove
+            remove: remove,
+            registerDonation: registerDonation
         };
     };
 

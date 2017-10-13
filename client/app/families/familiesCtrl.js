@@ -2,7 +2,7 @@
     /* global angular */
     'use strict';
 
-    var FamiliesCtrl = function ($state, familiesService, toastr) {
+    var FamiliesCtrl = function ($state, $uibModal, familiesService, toastr) {
         var vm = this,
 
             viewFamily = function (familyId) {
@@ -18,13 +18,27 @@
                     }, function () {
                         toastr.error('Erro ao remover família.');
                     });
+            },
+
+            openRegisterDonationModal = function (familyId) {
+                $uibModal.open({
+                    templateUrl: 'app/families/registerDonationModalTpl.html',
+                    controller: 'RegisterDonationModalCtrl as vm',
+                    size: 'lg',
+                    resolve: {
+                        familyId: function () {
+                            return familyId;
+                        }
+                    }
+                });
             };
 
         vm.viewFamily = viewFamily;
         vm.removeFamily = removeFamily;
+        vm.openRegisterDonationModal = openRegisterDonationModal;
     };
 
-    FamiliesCtrl.$inject = ['$state', 'familiesService', 'toastr'];
+    FamiliesCtrl.$inject = ['$state', '$uibModal', 'familiesService', 'toastr'];
 
     angular.module('abelhas-operarias')
         .controller('FamiliesCtrl', FamiliesCtrl);

@@ -1,5 +1,5 @@
 (function () {
-    /* global angular */
+    /* global angular, moment */
 
     'use strict';
 
@@ -81,6 +81,10 @@
                             vm.family = res.data.data;
                             vm.family.dateForDonation =
                                 new Date(res.data.data.dateForDonation);
+                            vm.family.monthsReceivedDonation = res.data.data
+                                .monthsReceivedDonation.map(function (m) {
+                                    return moment(m);
+                                });
                         }, function () {
                             toastr.error('Erro ao ler dados da família');
                         });
