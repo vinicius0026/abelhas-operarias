@@ -82,7 +82,9 @@
                             vm.family.dateForDonation =
                                 new Date(res.data.data.dateForDonation);
                             vm.family.monthsReceivedDonation = res.data.data
-                                .monthsReceivedDonation.map(m => moment(m));
+                                .monthsReceivedDonation.map(function (m) {
+                                    return moment(m);
+                                });
                         }, function () {
                             toastr.error('Erro ao ler dados da família');
                         });
