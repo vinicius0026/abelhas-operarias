@@ -1,6 +1,6 @@
 {
   "name": "abelhas-operarias",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Sistema de Controle para a Instituição Abelhas Operárias",
   "main": "server.js",
   "scripts": {
