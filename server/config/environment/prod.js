@@ -7,7 +7,6 @@
 module.exports = {
     db: {
         appDB: 'heroku_9jp74hcm',
-        baseUrl: `mongodb://abelhasoperarias:${process.env.MONGOLAB_PASSWORD}` +
-            `@ds045795.mongolab.com:45795/`
+        baseUrl: `mongodb+srv://abelhasoperarias:${process.env.DB_PASSWORD}@cluster0.93ykz.mongodb.net/abelhas-operarias?retryWrites=true&w=majority`
     }
 };
