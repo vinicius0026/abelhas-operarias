@@ -6,7 +6,7 @@ module.exports = function (app) {
 
         config = require('./config/environment'),
 
-        MONGODB_URI = config.db.baseUrl + config.db.appDB;
+        MONGODB_URI = config.db.baseUrl;
 
     require('./config/express')(app);
     require('./routes')(app);
